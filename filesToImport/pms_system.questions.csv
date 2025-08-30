@@ -1,0 +1,89 @@
+_id,text,department,category,isActive,createdBy,createdAt,updatedAt,__v
+68a959ebf538efdb1a871df9,Dashboard/Report Development \r\nTimeliness : % of dashboards and reports delivered within agreed timelines.,68a8b5dffc5fa72db9a109ae,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:04:27.167Z,2025-08-23T06:04:27.167Z,0
+68a95a09f538efdb1a871dff,Data Accuracy & Quality : % of reports generated without errors or data mismatches.,68a8b5dffc5fa72db9a109ae,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:04:57.077Z,2025-08-23T06:04:57.077Z,0
+68a95a36f538efdb1a871e05,User Adoption Rate : Number/percentage of business users actively using published Power BI solutions.,68a8b5dffc5fa72db9a109ae,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:05:42.900Z,2025-08-23T06:05:42.900Z,0
+68a95cf0f538efdb1a871e99,Support & Issue Resolution : Average response and resolution time for Power BI-related support,68a8b5dffc5fa72db9a109ae,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:17:20.115Z,2025-08-23T06:17:20.115Z,0
+68a95d2ef538efdb1a871e9f,Quiz : 100% quiz attempted in the month,68a8b5dffc5fa72db9a109ae,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T06:18:22.096Z,2025-08-23T06:18:22.096Z,0
+68a95d41f538efdb1a871ea5,Attendance : Within company policy of timings and late comings,68a8b5dffc5fa72db9a109ae,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:18:41.373Z,2025-08-23T06:18:41.373Z,0
+68a95d68f538efdb1a871eab,"Behavior : Communication skills, helping attitude etc",68a8b5dffc5fa72db9a109ae,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T06:19:20.151Z,2025-08-23T06:19:20.151Z,0
+68a95f84f538efdb1a871f1a,"On-Time Delivery Rate : % of projects, modules, or releases delivered within agreed",68a9353d053530ee63a0772c,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:28:20.067Z,2025-08-23T06:28:20.067Z,0
+68a96123f538efdb1a871f20,"Customer/Stakeholder Satisfaction Score : Feedback rating on delivered features, usability, and overall value.",68a9353d053530ee63a0772c,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:35:15.639Z,2025-08-23T06:35:15.639Z,0
+68a961a4f538efdb1a871f26,Quiz : 100% quiz attempted in the month.,68a9353d053530ee63a0772c,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T06:37:24.720Z,2025-08-23T06:37:24.720Z,0
+68a961e4f538efdb1a871f2c,Attendance : Within company policy of timings and late comings,68a9353d053530ee63a0772c,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:38:28.891Z,2025-08-23T06:38:28.891Z,0
+68a96215f538efdb1a871f32,"Behavior : Communication skills, helping attitude etc",68a9353d053530ee63a0772c,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T06:39:17.437Z,2025-08-23T06:39:17.437Z,0
+68a9639cf538efdb1a871f38,"On-Time Delivery Rate : % of projects, modules, or releases delivered within agreed",68a941d6053530ee63a0784e,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:45:48.957Z,2025-08-23T06:45:48.957Z,0
+68a963c0f538efdb1a871f3e,"Customer/Stakeholder Satisfaction Score : Feedback rating on delivered features, usability, and overall value.",68a941d6053530ee63a0784e,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:46:24.122Z,2025-08-23T06:46:24.122Z,0
+68a963e0f538efdb1a871f44,Quiz : 100% quiz attempted in the month,68a941d6053530ee63a0784e,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T06:46:56.143Z,2025-08-23T06:46:56.143Z,0
+68a963f4f538efdb1a871f4a,Attendance : Within company policy of timings and late comings,68a941d6053530ee63a0784e,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T06:47:16.608Z,2025-08-23T06:47:16.608Z,0
+68a9641af538efdb1a871f50,"Behavior : Communication skills, helping attitude etc",68a941d6053530ee63a0784e,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T06:47:54.533Z,2025-08-23T06:47:54.533Z,0
+68a96b90f538efdb1a871f56,First Call Resolution (FCR) Rate : % of POS issues resolved in the first interaction without escalation.,68a94246053530ee63a0786a,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:19:44.239Z,2025-08-23T07:19:44.239Z,0
+68a96bd4f538efdb1a871f5c,User Satisfaction Score (CSAT) : Feedback rating from store staff/users after support interactions.,68a94246053530ee63a0786a,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:20:52.683Z,2025-08-23T07:20:52.683Z,0
+68a96be9f538efdb1a871f62,Average Resolution Time : Time taken to resolve POS-related tickets or incidents.,68a94246053530ee63a0786a,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:21:13.261Z,2025-08-23T07:21:13.261Z,0
+68a96bfdf538efdb1a871f68,Quiz : 100% quiz attempted in the month,68a94246053530ee63a0786a,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T07:21:33.655Z,2025-08-23T07:21:33.655Z,0
+68a96c0df538efdb1a871f6e,Attendance : Within company policy of timings and late comings,68a94246053530ee63a0786a,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:21:49.742Z,2025-08-23T07:21:49.742Z,0
+68a96c30f538efdb1a871f74,"Behavior : Communication skills, helping attitude etc",68a94246053530ee63a0786a,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T07:22:24.175Z,2025-08-23T07:22:24.175Z,0
+68a96fcdf538efdb1a871f7a,First Call Resolution (FCR) Rate : % of POS issues resolved in the first interaction without escalation.,68a9422f053530ee63a07863,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:37:49.450Z,2025-08-23T07:37:49.450Z,0
+68a96fdcf538efdb1a871f80,User Satisfaction Score (CSAT) Feedback rating from store staff/users after support interactions.,68a9422f053530ee63a07863,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:38:04.349Z,2025-08-23T07:38:04.349Z,0
+68a96ffef538efdb1a871f86,Average Resolution Time : Time taken to resolve POS-related tickets or incidents.,68a9422f053530ee63a07863,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:38:38.003Z,2025-08-23T07:38:38.003Z,0
+68a9701ff538efdb1a871f8c,Quiz : 100% quiz attempted in the month,68a9422f053530ee63a07863,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T07:39:11.191Z,2025-08-23T07:39:11.191Z,0
+68a97040f538efdb1a871f92,Attendance Within company policy of timings and late comings,68a9422f053530ee63a07863,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:39:44.468Z,2025-08-23T07:39:44.468Z,0
+68a97057f538efdb1a871f98,"Behavior : Communication skills, helping attitude etc",68a9422f053530ee63a07863,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T07:40:07.888Z,2025-08-23T07:40:07.888Z,0
+68a97074f538efdb1a871f9e,First Call Resolution (FCR) Rate % of POS issues resolved in the first interaction without escalation.,68a9421a053530ee63a0785c,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:40:36.386Z,2025-08-23T07:40:36.386Z,0
+68a9708ff538efdb1a871fa4,User Satisfaction Score (CSAT) : Feedback rating from store staff/users after support interactions.,68a9421a053530ee63a0785c,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:41:03.233Z,2025-08-23T07:41:03.233Z,0
+68a970d6f538efdb1a871faa,Average Resolution Time : Time taken to resolve POS-related tickets or incidents.,68a9421a053530ee63a0785c,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:42:14.889Z,2025-08-23T07:42:14.889Z,0
+68a970ecf538efdb1a871fb0,Quiz : 100% quiz attempted in the month,68a9421a053530ee63a0785c,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T07:42:36.267Z,2025-08-23T07:42:36.267Z,0
+68a97104f538efdb1a871fb6,Attendance : Within company policy of timings and late comings,68a9421a053530ee63a0785c,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:43:00.253Z,2025-08-23T07:43:00.253Z,0
+68a9711ef538efdb1a871fbc,"Behavior : Communication skills, helping attitude etc",68a9421a053530ee63a0785c,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T07:43:26.515Z,2025-08-23T07:43:26.515Z,0
+68a97134f538efdb1a871fc2,Defect Detection Rate\r\nPercentage of defects identified during testing compared to those \r\nfound post-release.,68a941f8053530ee63a07855,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:43:48.247Z,2025-08-23T07:43:48.247Z,0
+68a97141f538efdb1a871fc8,Defect Leakage Percentage of defects that escape testing and are reported in,68a941f8053530ee63a07855,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:44:01.399Z,2025-08-23T07:44:01.399Z,0
+68a97158f538efdb1a871fce,Quiz 100% quiz attempted in the month,68a941f8053530ee63a07855,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T07:44:24.774Z,2025-08-23T07:44:24.774Z,0
+68a97171f538efdb1a871fd4,Attendance Within company policy of timings and late comings,68a941f8053530ee63a07855,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:44:49.681Z,2025-08-23T07:44:49.681Z,0
+68a971a9f538efdb1a871fda,"Behavior Communication skills, helping attitude etc",68a941f8053530ee63a07855,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T07:45:45.959Z,2025-08-23T07:45:45.959Z,0
+68a9722af538efdb1a871fe0,Network Uptime / Availability (%) Measures how consistently the network is operational.,68a94256053530ee63a07871,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:47:54.173Z,2025-08-23T07:47:54.173Z,0
+68a9733df538efdb1a871fe6,Incident Volume & Resolution \r\nRate\r\nNumber of hardware/network issues reported vs. resolved within \r\nSLA.,68a94256053530ee63a07871,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:52:29.982Z,2025-08-23T07:52:29.982Z,0
+68a97397f538efdb1a871fec,Infra setup in new store % success completion,68a94256053530ee63a07871,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:53:59.732Z,2025-08-23T07:53:59.732Z,0
+68a973a8f538efdb1a871ff2,Quiz 100% quiz attempted in the month,68a94256053530ee63a07871,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T07:54:16.911Z,2025-08-23T07:54:16.911Z,0
+68a973b9f538efdb1a871ff8,Attendance Within company policy of timings and late comings,68a94256053530ee63a07871,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T07:54:33.142Z,2025-08-23T07:54:33.142Z,0
+68a97561f538efdb1a871ffe,"Behavior Communication skills, helping attitude etc",68a94256053530ee63a07871,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T08:01:37.260Z,2025-08-23T08:01:37.260Z,0
+68a97572f538efdb1a872004,"Model Accuracy & Performance\r\nPercentage improvement in AI model accuracy, precision, recall, or \r\nother relevant performance metrics.",68a8b5e9fc5fa72db9a109b4,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:01:54.590Z,2025-08-23T08:01:54.590Z,0
+68a97592f538efdb1a87200a,Deployment Success Rate\r\nRatio of AI models successfully deployed into production without \r\nrollback or critical errors.,68a8b5e9fc5fa72db9a109b4,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:02:26.825Z,2025-08-23T08:02:26.825Z,0
+68a975acf538efdb1a872010,Quiz 100% quiz attempted in the month,68a8b5e9fc5fa72db9a109b4,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T08:02:52.664Z,2025-08-23T08:02:52.664Z,0
+68a97699f538efdb1a872016,Attendance Within company policy of timings and late comings,68a8b5e9fc5fa72db9a109b4,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:06:49.864Z,2025-08-23T08:06:49.864Z,0
+68a976a3f538efdb1a87201c,"Behavior Communication skills, helping attitude etc",68a8b5e9fc5fa72db9a109b4,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T08:06:59.707Z,2025-08-23T08:06:59.707Z,0
+68a976b8f538efdb1a872022,"On-Time Delivery Rate % of projects, modules, or releases delivered within agreed",68a9426f053530ee63a07878,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:07:20.302Z,2025-08-23T08:07:20.302Z,0
+68a976c9f538efdb1a872028,"Customer/Stakeholder \r\nSatisfaction Score Feedback rating on delivered features, usability, and overall value.",68a9426f053530ee63a07878,performance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:07:37.914Z,2025-08-23T08:07:37.914Z,0
+68a976dcf538efdb1a87202e,Quiz 100% quiz attempted in the month,68a9426f053530ee63a07878,quiz,true,68a8b010fc5fa72db9a10982,2025-08-23T08:07:56.306Z,2025-08-23T08:07:56.306Z,0
+68a976fbf538efdb1a872034,Attendance Within company policy of timings and late comings,68a9426f053530ee63a07878,attendance,true,68a8b010fc5fa72db9a10982,2025-08-23T08:08:27.394Z,2025-08-23T08:08:27.394Z,0
+68a9770bf538efdb1a87203a,"Behavior Communication skills, helping attitude etc",68a9426f053530ee63a07878,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-23T08:08:43.998Z,2025-08-23T08:08:43.998Z,0
+68b15518a0346d613c9e3ee7,No of stores trained,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:22:00.771Z,2025-08-29T07:22:00.771Z,0
+68b15520a0346d613c9e3eed,No of staff trained,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:22:08.391Z,2025-08-29T07:22:08.391Z,0
+68b1552da0346d613c9e3ef3,Training Hrs delivered ( Man Hrs),68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:22:21.273Z,2025-08-29T07:22:21.273Z,0
+68b15541a0346d613c9e3ef9,Sales Growth post training,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:22:41.980Z,2025-08-29T07:22:41.980Z,0
+68b1554ea0346d613c9e3eff,Target Achievement Region -COCO,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:22:54.595Z,2025-08-29T07:22:54.595Z,0
+68b15559a0346d613c9e3f05,Target Achievement Region -FOFO,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:23:05.689Z,2025-08-29T07:23:05.689Z,0
+68b15589a0346d613c9e3f0b,Conversion Rate Improvement,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:23:53.872Z,2025-08-29T07:23:53.872Z,0
+68b15596a0346d613c9e3f11,Rare sales,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:24:06.363Z,2025-08-29T07:24:06.363Z,0
+68b155a1a0346d613c9e3f17,Post training feedback Rate,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:24:17.348Z,2025-08-29T07:24:17.348Z,0
+68b155b5a0346d613c9e3f1d,Modules created,68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:24:37.200Z,2025-08-29T07:24:37.200Z,0
+68b155c5a0346d613c9e3f23,Assesment New joinee ( 90 days-Monthly ),68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:24:53.297Z,2025-08-29T07:24:53.297Z,0
+68b155d2a0346d613c9e3f29,Google review ( based on no of bills / footfall generated for region),68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:25:06.796Z,2025-08-29T07:25:06.796Z,0
+68b155e0a0346d613c9e3f2f,NPS score ( Mystery audit ),68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:25:20.980Z,2025-08-29T07:25:20.980Z,0
+68b155eaa0346d613c9e3f35,Quiz participation,68b1423ba0346d613c9e3e65,quiz,true,68a8b010fc5fa72db9a10982,2025-08-29T07:25:30.249Z,2025-08-29T07:25:30.249Z,0
+68b1560ea0346d613c9e3f3b,LMS - Nof of Hrs ( once goes live ),68b1423ba0346d613c9e3e65,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:26:06.335Z,2025-08-29T07:26:06.335Z,0
+68b156b1a0346d613c9e3f41,Attendance : Within company policy of timings and late comings,68b1423ba0346d613c9e3e65,attendance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:28:49.888Z,2025-08-29T07:28:49.888Z,0
+68b156eca0346d613c9e3f47,"Behavior : Communication skills, helping attitude etc",68b1423ba0346d613c9e3e65,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-29T07:29:48.919Z,2025-08-29T07:29:48.919Z,0
+68b15732a0346d613c9e3f4d,No of stores trained,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:30:58.907Z,2025-08-29T07:30:58.907Z,0
+68b15740a0346d613c9e3f53,No of staff trained,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:31:12.129Z,2025-08-29T07:31:12.129Z,0
+68b1574aa0346d613c9e3f59,Training Hrs delivered ( Man Hrs),68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:31:22.171Z,2025-08-29T07:31:22.171Z,0
+68b15755a0346d613c9e3f5f,Sales Growth post training,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:31:33.887Z,2025-08-29T07:31:33.887Z,0
+68b15761a0346d613c9e3f65,Target Achievement Region - Primary,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:31:45.321Z,2025-08-29T07:31:45.321Z,0
+68b1576ea0346d613c9e3f6b,Target Achievement Region - Sales,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:31:58.007Z,2025-08-29T07:31:58.007Z,0
+68b1577aa0346d613c9e3f71,Rare sales,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:32:10.875Z,2025-08-29T07:32:10.875Z,0
+68b15790a0346d613c9e3f77,Post training feedback Rate,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:32:32.509Z,2025-08-29T07:32:32.509Z,0
+68b1579ea0346d613c9e3f7d,Modules created,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:32:46.390Z,2025-08-29T07:32:46.390Z,0
+68b157a6a0346d613c9e3f83,Quiz Participation,68b14228a0346d613c9e3e5e,quiz,true,68a8b010fc5fa72db9a10982,2025-08-29T07:32:54.842Z,2025-08-29T07:32:54.842Z,0
+68b157b2a0346d613c9e3f89,Assesment New joinee ( 90 days-Monthly ),68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:33:06.269Z,2025-08-29T07:33:06.269Z,0
+68b157c0a0346d613c9e3f8f,Low performing BA's review,68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:33:20.627Z,2025-08-29T07:33:20.627Z,0
+68b157cba0346d613c9e3f95,LMS - No of Hrs ( once goes live ),68b14228a0346d613c9e3e5e,performance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:33:31.279Z,2025-08-29T07:33:31.279Z,0
+68b157faa0346d613c9e3f9b,Attendance : Within company policy of timings and late comings,68b14228a0346d613c9e3e5e,attendance,true,68a8b010fc5fa72db9a10982,2025-08-29T07:34:18.512Z,2025-08-29T07:34:18.512Z,0
+68b1580ca0346d613c9e3fa1,"Behavior : Communication skills, helping attitude etc",68b14228a0346d613c9e3e5e,behaviour,true,68a8b010fc5fa72db9a10982,2025-08-29T07:34:36.748Z,2025-08-29T07:34:36.748Z,0

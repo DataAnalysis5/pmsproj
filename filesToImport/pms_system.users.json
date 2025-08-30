@@ -1,0 +1,990 @@
+[{
+  "_id": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "name": "System Administrator",
+  "email": "admin@company.com",
+  "password": "$2a$12$nINiIu/xoC674b0vakMj9uCEWiXQbhc8Ki7owSZoSCgajgJnycDtW",
+  "employeeId": "ADMIN001",
+  "role": "admin",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-22T17:59:44.474Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-22T17:59:44.478Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-22T17:59:44.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a942ff053530ee63a07892"
+  },
+  "name": "DEEPALI GHOLEKAR",
+  "email": "analyst@kisna.com",
+  "password": "$2a$12$4wt5xO4hZg8zblHXddAZi.hTGJgLbFNlzmSMDHTwG5KZgIjFEj8vK",
+  "employeeId": "2994",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:26:39.034Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:26:39.034Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:19:26.884Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94320053530ee63a07899"
+  },
+  "name": "Pranav Falod",
+  "email": "analyst@kisna.com",
+  "password": "$2a$12$ksTLy2hgz62kKnTtK9GWR.bzjaFUX2d1GwV46bLJwZJ7pIZ9.Rrj2",
+  "employeeId": "10356",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:27:12.287Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:27:12.288Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:19:36.531Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a9433f053530ee63a078a0"
+  },
+  "name": "Shrushti Mehta",
+  "email": "storeit@kisna.com",
+  "password": "$2a$12$m1bvYgu6GNsqIHv.nuNeKO/61v5ojz9iAAFoSUBEklaj7VJrE.RWq",
+  "employeeId": "3151",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:27:43.453Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:27:43.453Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:19:50.504Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94869053530ee63a078a7"
+  },
+  "name": "Sreerama Reddy",
+  "email": "sreerama.reddy@kisna.com",
+  "password": "$2a$12$ZAg3nwE5BMxop83hxmK8XO5bi.0YkzYvNyeGPDpof5uQ.RClyvJYW",
+  "employeeId": "5356",
+  "role": "hod",
+  "department": {
+    "$oid": "68a8b5d5fc5fa72db9a109a9"
+  },
+  "hodLevel": "higher",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:49:45.482Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:49:45.483Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:20:26.126Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a948e5053530ee63a078ae"
+  },
+  "name": "Dipak Kamble",
+  "email": "qa@kisna.com",
+  "password": "$2a$12$Os9sPM6v/tqw6b8u/z07Fe/0vVMpFvKXGAdTWcN6Jr8US2iJgLT36",
+  "employeeId": "7855",
+  "role": "employee",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:51:49.264Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:51:49.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:20:36.703Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a9490e053530ee63a078b5"
+  },
+  "name": "Dikshant Buwa",
+  "email": "dataanalysis5@kisna.com",
+  "password": "$2a$12$V1Eu7a0Mt5V2JHYI9ru8R.uUHnp1rnwKC0bhqes5LdPCxxRJjubVe",
+  "employeeId": "10445",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:52:30.853Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:52:30.854Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:20:45.192Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94940053530ee63a078bc"
+  },
+  "name": "Ashish Shrivastava",
+  "email": "ashish.shrivastava@kisna.com",
+  "password": "$2a$12$dxCYLIDg6ipb740igxp8VeYJcA0YweX.ulk54nPBYSNTujXcnf5.a",
+  "employeeId": "10311",
+  "role": "hod",
+  "department": {
+    "$oid": "68a8b5d5fc5fa72db9a109a9"
+  },
+  "hodLevel": "higher",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:53:20.902Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:53:20.902Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:20:57.517Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a94a44053530ee63a078c3"
+  },
+  "name": "DIPALI YESADE",
+  "email": "softwaresupport@kisna.com",
+  "password": "$2a$12$nZgGlmT0KJKrZ6hOmfk06eSetl8U37TTQctls9J74zW3NvARJ2JCW",
+  "employeeId": "10338",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:57:40.434Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:57:40.435Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:21:08.973Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94a6c053530ee63a078ca"
+  },
+  "name": "Shashwat Choure",
+  "email": "shashwat.choure@kisna.com",
+  "password": "$2a$12$7ZaJA6yPgt/gkKTFmDsaQuTn00siH/lafz0O4Fic/iu7PWfe4fU6e",
+  "employeeId": "7606",
+  "role": "employee",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:58:20.452Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:58:20.453Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:21:19.673Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94a9e053530ee63a078d1"
+  },
+  "name": "Pratima karale",
+  "email": "programmer4@kisna.com",
+  "password": "$2a$12$H/NpvVMBbSZfppgzxh2bm.j654HZsSSiIPht1w8GZb0PN6KunkSMe",
+  "employeeId": "5315",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T04:59:10.338Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T04:59:10.338Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:21:30.356Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94ad0053530ee63a078d8"
+  },
+  "name": "Jayesh Nirala",
+  "email": "jayesh.n@kisna.com",
+  "password": "$2a$12$PQpCYqN1lmYufllgXVCVL.sbuvOTJNOATvir91mgcZR6L5vaLuqm2",
+  "employeeId": "7839",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:00:00.125Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:00:00.126Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:21:38.827Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94aea053530ee63a078df"
+  },
+  "name": "Devendra Dharwar",
+  "email": "ios@kisna.com",
+  "password": "$2a$12$IhqvDe8TQc.RiWAvR5YILOI8BeTq6Ao74pe2oKCxF.lWwf2t/Y4gq",
+  "employeeId": "7661",
+  "role": "employee",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:00:26.751Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:00:26.752Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:22:09.368Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "name": "Vipin Seni",
+  "email": "vipin.s@kisna.com",
+  "password": "$2a$12$nsrUC2IzZ654f4AXbmAMcOVrNfv36ev42XTCY1zTgDdvQF9b70Bsq",
+  "employeeId": "10357",
+  "role": "hod",
+  "department": {
+    "$oid": "68a8b5d5fc5fa72db9a109a9"
+  },
+  "hodLevel": "higher",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:01:11.592Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:01:11.593Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:22:33.527Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68a94b40053530ee63a078ed"
+  },
+  "name": "Kimaya Mandavkar",
+  "email": "east.possupport@kisna.com",
+  "password": "$2a$12$6qvq.WJ5hjUKaJNIYVBUUusgA9s5qJVci4FGLe3DlIdHT6/ml3u9e",
+  "employeeId": "10088",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:01:52.707Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:01:52.708Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:22:49.384Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94b62053530ee63a078f4"
+  },
+  "name": "Arshdeep Singh",
+  "email": "analyst@kisna.com",
+  "password": "$2a$12$Ww5F7VYMat8FCrzASgf2d.P7ApKYl8xu.TyIazSj8C4mJ8y6s3ATG",
+  "employeeId": "10349",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:02:26.052Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:02:26.053Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:23:00.571Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94b89053530ee63a078fb"
+  },
+  "name": "Pooja Kandu",
+  "email": "south.possupport@kisna.com",
+  "password": "$2a$12$6nbA3/oDXiq.kz4dwX43k.BZvHbsY21OBD7tjs7aqD.kBuqnVBOBy",
+  "employeeId": "10181",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:03:05.084Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:03:05.084Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:23:12.854Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94bc2053530ee63a07902"
+  },
+  "name": "Gauri Gaikwad",
+  "email": "kisnaforce.support@kisna.com",
+  "password": "$2a$12$GFSyOlmk7uiX2hVHOGAI1.dKfNSjXlo5tPJjVEH5aTKjkdhBI/oB6",
+  "employeeId": "10245",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:04:02.522Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:04:02.522Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:28:22.595Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94be0053530ee63a07909"
+  },
+  "name": "Parag Haria",
+  "email": "programmer9@kisna.com",
+  "password": "$2a$12$9OMvgJp7kLWGgMcPFa3aPeluI5ICLgcLJGpemCMO/wLhWohENzBR6",
+  "employeeId": "9977",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:04:32.352Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:04:32.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:28:37.940Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94c07053530ee63a07910"
+  },
+  "name": "TEJASWINI ATHAWALE",
+  "email": "tejaswini.a@kisna.com",
+  "password": "$2a$12$UpKrU8y5i4MOdZbd4TXUz.G7W0e7dLxNQ4NHQj8OhSHvcRkK6Ofuy",
+  "employeeId": "10550",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:05:11.193Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:05:11.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:28:49.837Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94c89053530ee63a07917"
+  },
+  "name": "Sumit Deorepatil",
+  "email": "sumit.d@kisna.com",
+  "password": "$2a$12$4.wQHhla.tHTSUGohibmx.9BkBnrATb/hYXGd2JAmQaEbKvabeF8y",
+  "employeeId": "461",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:07:21.924Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:07:21.924Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:29:03.876Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94d0e053530ee63a0791e"
+  },
+  "name": "Pragati Panhale",
+  "email": "pragati.panhale@kisna.com",
+  "password": "$2a$12$BU03jA2lX4glVyiBjdScquD6c7OgwXaYna6V9Qg2zJP7awHdGCMSe",
+  "employeeId": "10669",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:09:34.969Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:09:34.970Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:29:20.325Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94d2d053530ee63a07925"
+  },
+  "name": "Pradeep Giri",
+  "email": "programmer7@kisna.com",
+  "password": "$2a$12$kIOU8hRn76o/iaWtV7g9/eUPq8ufmBfM1/e5LfgEP.DFlGDY9Vadu",
+  "employeeId": "6565",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:10:05.635Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:10:05.636Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:29:44.777Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94d6e053530ee63a0792c"
+  },
+  "name": "VAIBHAV KUMAR",
+  "email": "dataanalysis2@kisna.com",
+  "password": "$2a$12$DhjA/cIB/VggiL/t1yQ6x.kOkAq59RkhfjWthqQeGFsGbPVHC9LvK",
+  "employeeId": "10231",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:11:10.948Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:11:10.949Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:29:59.483Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94d9c053530ee63a07933"
+  },
+  "name": "Kishor Kamble",
+  "email": "programmer6@kisna.com",
+  "password": "$2a$12$9Ac.b6LD1ElL8ZTHS1h0Z.VdaHDL7qQQMV.WTgwVHO5wHtkC6Ty.u",
+  "employeeId": "5406",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:11:56.487Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:11:56.488Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:30:10.254Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94dc7053530ee63a0793a"
+  },
+  "name": "Pranav Pevekar",
+  "email": "storeit@kisna.com",
+  "password": "$2a$12$JUqX0yi0yDfJzUjUxYcDjuy3DFWahPqOmK3YeFI6qTCZ.jG9Wqg8u",
+  "employeeId": "10303",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:12:39.510Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:12:39.511Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:30:21.215Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94de5053530ee63a07941"
+  },
+  "name": "Meet Mehta",
+  "email": "meet.mehta@kisna.com",
+  "password": "$2a$12$NuEmk.EyOZ5I94j4hrqGruOCukc4lMoJklERqcltCiFLAQiDKhVIG",
+  "employeeId": "6546",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:13:09.569Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:13:09.569Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:30:31.653Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94e07053530ee63a07948"
+  },
+  "name": "Aman Trivedi",
+  "email": "analyst@kisna.com",
+  "password": "$2a$12$E7Wk7YQvXqtxNM.WUX/lj.RXHyY.7CN0HXoD4v5tnCT1nut8jJ20.",
+  "employeeId": "10376",
+  "role": "employee",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:13:43.617Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:13:43.617Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:30:44.576Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94e2b053530ee63a0794f"
+  },
+  "name": "Prasad Barvekar",
+  "email": "prasadb@kisna.com",
+  "password": "$2a$12$ZMFONv6DEr2p55cVZO4Gce7Qs.wa2SL3mTA2nimnnmBsRcvy5a.PW",
+  "employeeId": "5225",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:14:19.867Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:14:19.867Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:30:58.090Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a94e4a053530ee63a07956"
+  },
+  "name": "Satish Shukla",
+  "email": "prasadb@kisna.com",
+  "password": "$2a$12$9P/.o3RPQPTBszzDbgG.2eMm.us1eAxGJxq8yJi2AyHMIlUsihzXi",
+  "employeeId": "10528",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:14:50.713Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:14:50.714Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:31:10.442Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a95004053530ee63a0795d"
+  },
+  "name": "Chintan Vekariya",
+  "email": "chintan.v@kisna.com",
+  "password": "$2a$12$AJ8fSjnPySjI6UG81g1bHuZ/OPA2zAb5cnkEfQJu36fgB8axMBMZO",
+  "employeeId": "459",
+  "role": "employee",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:22:12.576Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:22:12.576Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:20:10.420Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68a950b7053530ee63a07964"
+  },
+  "name": "Keshav Yadav",
+  "email": "keshav@kisna.com",
+  "password": "$2a$12$U4zIiT7OlSRy3JluF2NKNe0FWDB1Ff52m/CNZ.UUcD9Ph8PRHeS1.",
+  "employeeId": "222",
+  "role": "employee",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-23T05:25:11.330Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-23T05:25:11.331Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-25T06:31:24.100Z"
+  },
+  "__v": 0,
+  "hodLevel": null
+},
+{
+  "_id": {
+    "$oid": "68b145d0a0346d613c9e3e80"
+  },
+  "name": "Anita Stany Serrao",
+  "email": "anita.d@kisna.com",
+  "password": "$2a$12$1/xpxDgqVlX6zkH347RSDurocNLqOvuz/bv1mQQFtF8t6vEBD3sQy",
+  "employeeId": "10156",
+  "role": "hod",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "hodLevel": "higher",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:16:48.135Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:16:48.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:55:13.922Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14623a0346d613c9e3e87"
+  },
+  "name": "Vinod Lala",
+  "email": "vinod.l@kisna.com",
+  "password": "$2a$12$UZrTl./G7S8OaKLAOboHNupqixIfBqKjcUISN81CUOInDMtNSRzm2",
+  "employeeId": "7781",
+  "role": "employee",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:18:11.256Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:18:11.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:18:11.257Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14f11a0346d613c9e3eaa"
+  },
+  "name": "Pooja Bhatt",
+  "email": "frtraining@kisna.com",
+  "password": "$2a$12$QVnlrrPdMgcaUz67pN9YEeU96LjvdR4k4LXbbBJ21PDQWcs8N5bES",
+  "employeeId": "10082",
+  "role": "employee",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:56:17.284Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:56:17.284Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:56:17.284Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14f26a0346d613c9e3eb1"
+  },
+  "name": "Purushotham B",
+  "email": "purushotham.b@kisna.com",
+  "password": "$2a$12$U.rvrNK5iBR0zlJ2jQAsRuDGzyrw9vS2LK/V4DP7WOGVGYDtDoX5m",
+  "employeeId": "10913",
+  "role": "employee",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:56:38.250Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:56:38.250Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:56:38.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14f54a0346d613c9e3eb8"
+  },
+  "name": "Sanjeev Rathi",
+  "email": "sanjeev.rathi@kisna.com",
+  "password": "$2a$12$wLxivkhRjqnOVQaVf83dTOXYvfho5FcQo2bHdu2ZfwsyvHKOhZ4fG",
+  "employeeId": "10113",
+  "role": "employee",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:57:24.191Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:57:24.191Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:57:24.191Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14f7da0346d613c9e3ebf"
+  },
+  "name": "Aman Tyagi",
+  "email": "aman.tyagi@kisna.com",
+  "password": "$2a$12$gcNAKXcJ2cYAtREouNYn5uNPTalCtDyllQJBM2jxHkx04i5bhnX4q",
+  "employeeId": "10962",
+  "role": "employee",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:58:05.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:58:05.001Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:58:05.001Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14f97a0346d613c9e3ec6"
+  },
+  "name": "Mangesh Bhakre",
+  "email": "training_old@kisna.com",
+  "password": "$2a$12$WZN18iv59GLT78Wlp98I4OiNc4bmXAKEjrUST840qpAx4Ody5ENxu",
+  "employeeId": "10040",
+  "role": "hod",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "hodLevel": "higher",
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:58:31.594Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:58:31.594Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:58:31.594Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b14fb0a0346d613c9e3ecd"
+  },
+  "name": "Warren Falcon",
+  "email": "training1@kisna.com",
+  "password": "$2a$12$Fcxc9hXpc5/S8xBn80lm..ywzyhbXq8pFgPSuCQmiTz8H5kHN2FAO",
+  "employeeId": "10609",
+  "role": "employee",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "isActive": true,
+  "joiningDate": {
+    "$date": "2025-08-29T06:58:56.575Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-29T06:58:56.576Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-29T06:58:56.576Z"
+  },
+  "__v": 0
+}]
