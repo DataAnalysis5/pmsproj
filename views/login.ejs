@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Performance Management System</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Background Animation -->
+        <div class="background-animation">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <!-- Header Section -->
+            <div class="login-header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h1>Performance Management System</h1>
+                    <p class="subtitle">Streamline your performance reviews and analytics</p>
+                </div>
+            </div>
+            
+            <!-- Alert Messages -->
+            <% if (error) { %>
+                <div class="alert alert-error" id="errorAlert">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span><%= error %></span>
+                    <button class="alert-close" onclick="closeAlert('errorAlert')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            <% } %>
+            
+            <!-- Login Form -->
+            <form action="/auth/login" method="POST" class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="employeeId">
+                        <i class="fas fa-id-badge"></i>
+                        Employee ID
+                    </label>
+                    <input 
+                        type="text" 
+                        id="employeeId" 
+                        name="employeeId" 
+                        required 
+                        autocomplete="username"
+                        placeholder="Enter your Employee ID"
+                        class="form-input"
+                    >
+                    <div class="input-border"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            class="form-input"
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye" id="passwordToggleIcon"></i>
+                        </button>
+                    </div>
+                    <div class="input-border"></div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password" onclick="showForgotPassword()">
+                        Forgot Password?
+                    </a>
+                </div>
+                
+                <button type="submit" class="btn-login" id="loginButton">
+                    <span class="btn-text">Sign In</span>
+                    <span class="btn-loader" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Signing in...
+                    </span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="login-footer">
+            <p>&copy; 2025 Performance Management System. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" onclick="showAbout()">About</a>
+                <a href="#" onclick="showHelp()">Help</a>
+                <a href="#" onclick="showContact()">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reset Password</h3>
+                <button class="modal-close" onclick="closeModal('forgotPasswordModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Enter your Employee ID and we'll send you instructions to reset your password.</p>
+                <form class="modal-form">
+                    <div class="form-group">
+                        <label for="resetEmployeeId">Employee ID</label>
+                        <input type="text" id="resetEmployeeId" placeholder="Enter your Employee ID" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Reset Link
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About PMS</h3>
+                <button class="modal-close" onclick="closeModal('aboutModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>The Performance Management System is designed to streamline employee performance reviews and provide comprehensive analytics for better decision-making.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Role-based access control</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Quarterly performance tracking</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Real-time analytics dashboard</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Multi-department support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="admin-page">
+            <div class="page-header">
+                <h1>Edit Employee: <%= employee.name %></h1>
+                <a href="/admin/employees" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Employees
+                </a>
+            </div>
+            
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <div class="admin-card" style="max-width: 800px; margin: 0 auto;">
+                <h3>Employee Information</h3>
+                <form action="/admin/employees/<%= employee._id %>/edit" method="POST" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" value="<%= employee.name %>" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="<%= employee.email %>" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeId">Employee ID</label>
+                            <input type="text" id="employeeId" name="employeeId" value="<%= employee.employeeId %>" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password (Leave blank to keep current)</label>
+                            <input type="password" id="password" name="password" placeholder="Enter new password or leave blank">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" required onchange="toggleHodLevel()">
+                                <option value="">Select Role</option>
+                                <option value="employee" <%= employee.role === 'employee' ? 'selected' : '' %>>Employee</option>
+                                <option value="hod" <%= employee.role === 'hod' ? 'selected' : '' %>>HOD</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="hodLevelGroup" style="display: <%= employee.role === 'hod' ? 'block' : 'none' %>;">
+                            <label for="hodLevel">HOD Level</label>
+                            <select id="hodLevel" name="hodLevel">
+                                <option value="">Select Level</option>
+                                <option value="higher" <%= employee.hodLevel === 'higher' ? 'selected' : '' %>>Higher Level</option>
+                                <option value="lower" <%= employee.hodLevel === 'lower' ? 'selected' : '' %>>Lower Level</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select Department</option>
+                            <% departments.forEach(dept => { %>
+                                <option value="<%= dept._id %>" <%= employee.department && employee.department._id.toString() === dept._id.toString() ? 'selected' : '' %>>
+                                    <%= dept.name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="/admin/employees" class="btn btn-outline">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update Employee
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        // Allow form submission to proceed
+        return true;
+    }
+
+    function toggleHodLevel() {
+        const roleSelect = document.getElementById('role');
+        const hodLevelGroup = document.getElementById('hodLevelGroup');
+        const hodLevelSelect = document.getElementById('hodLevel');
+        
+        if (roleSelect.value === 'hod') {
+            hodLevelGroup.style.display = 'block';
+            hodLevelSelect.required = true;
+        } else {
+            hodLevelGroup.style.display = 'none';
+            hodLevelSelect.required = false;
+            hodLevelSelect.value = '';
+        }
+    }
+    </script>
+</body>
+</html>

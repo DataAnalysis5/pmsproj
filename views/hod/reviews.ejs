@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Reviews - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <%
+    function getPerformanceLevel(score) {
+        if (score >= 6) return 'Outstanding Performance';
+        if (score >= 5) return 'Superior Performance';
+        if (score >= 4) return 'Effective Performance';
+        if (score >= 3) return 'Standard Performance';
+        if (score >= 2) return 'Developing Performance';
+        return 'Ineffective Performance';
+    }
+    %>
+
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="reviews-page">
+            <div class="page-header">
+                <h1>Review Management - <%= department.name %></h1>
+                <div class="header-info">
+                    <span class="current-quarter">Current Quarter: <%= currentQuarter %></span>
+                    <a href="/hod/dashboard" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+            
+            <div class="reviews-tabs">
+                <button class="tab-btn active" onclick="showTab('employees')">Department Employees</button>
+                <button class="tab-btn" onclick="showTab('dept-hods')">Department HODs</button>
+                <button class="tab-btn" onclick="showTab('other-hods')">Other HODs</button>
+                <button class="tab-btn" onclick="showTab('history')">Review History</button>
+            </div>
+            
+             Department Employees Tab 
+            <div id="employees-tab" class="tab-content active">
+                <div class="reviews-card">
+                    <h3>Department Employees to Review (<%= currentQuarter %>)</h3>
+                    <div class="employees-to-review">
+                        <% employeesToReview.forEach(employee => { %>
+                            <div class="employee-card">
+                                <div class="employee-info">
+                                    <h4><%= employee.name %></h4>
+                                    <p>ID: <%= employee.employeeId %></p>
+                                    <p>Email: <%= employee.email %></p>
+                                    <p>Department: <%= employee.department ? employee.department.name : 'Not Assigned' %></p>
+                                    <p>Joined: <%= new Date(employee.joiningDate).toLocaleDateString() %></p>
+                                </div>
+                                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                                  <button class="btn btn-primary" onclick="openReviewModal('<%= employee._id %>', '<%= employee.name %>', '<%= employee.employeeId %>', 'employee')">
+                                      <i class="fas fa-edit"></i> Review
+                                  </button>
+                                  <button class="btn btn-outline" onclick="viewSelfAssessment('<%= employee._id %>')">
+                                      <i class="fas fa-eye"></i> View Self Assessment
+                                  </button>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% if (employeesToReview.length === 0) { %>
+                            <p class="no-employees">All department employees have been reviewed for this quarter!</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            
+             Department HODs Tab 
+            <div id="dept-hods-tab" class="tab-content">
+                <div class="reviews-card">
+                    <h3>Department HODs to Review (<%= currentQuarter %>)</h3>
+                    <div class="employees-to-review">
+                        <% departmentHODsToReview.forEach(hod => { %>
+                            <div class="employee-card">
+                                <div class="employee-info">
+                                    <h4><%= hod.name %></h4>
+                                    <p>ID: <%= hod.employeeId %></p>
+                                    <p>Level: <%= hod.hodLevel ? hod.hodLevel.toUpperCase() : 'N/A' %></p>
+                                    <p>Email: <%= hod.email %></p>
+                                    <p>Department: <%= hod.department ? hod.department.name : 'Not Assigned' %></p>
+                                </div>
+                                <button class="btn btn-primary" onclick="openReviewModal('<%= hod._id %>', '<%= hod.name %>', '<%= hod.employeeId %>', 'hod')">
+                                    <i class="fas fa-edit"></i> Review
+                                </button>
+                            </div>
+                        <% }) %>
+                        <% if (departmentHODsToReview.length === 0) { %>
+                            <p class="no-employees">All department HODs have been reviewed for this quarter!</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            
+             Other HODs Tab 
+            <div id="other-hods-tab" class="tab-content">
+                <div class="reviews-card">
+                    <h3>HODs from Other Departments (<%= currentQuarter %>)</h3>
+                    <div class="employees-to-review">
+                        <% otherHODsToReview.forEach(hod => { %>
+                            <div class="employee-card">
+                                <div class="employee-info">
+                                    <h4><%= hod.name %></h4>
+                                    <p>ID: <%= hod.employeeId %></p>
+                                    <p>Department: <%= hod.department.name %></p>
+                                    <p>Level: <%= hod.hodLevel ? hod.hodLevel.toUpperCase() : 'N/A' %></p>
+                                </div>
+                                <button class="btn btn-primary" onclick="openReviewModal('<%= hod._id %>', '<%= hod.name %>', '<%= hod.employeeId %>', 'hod')">
+                                    <i class="fas fa-edit"></i> Review
+                                </button>
+                            </div>
+                        <% }) %>
+                        <% if (otherHODsToReview.length === 0) { %>
+                            <p class="no-employees">All HODs from other departments have been reviewed for this quarter!</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            
+             Review History Tab 
+            <div id="history-tab" class="tab-content">
+                <div class="reviews-card">
+                    <h3>All Reviews History</h3>
+                    <div class="reviews-history">
+                        <% allReviews.forEach(review => { %>
+                            <div class="review-history-item">
+                                <div class="review-header">
+                                    <strong><%= review.employee.name %> (<%= review.employee.role.toUpperCase() %>)</strong>
+                                    <span class="review-quarter"><%= review.quarter %></span>
+                                </div>
+                                <div class="review-score">
+                                    <span class="score"><%= review.overallScore || review.score || 'N/A' %>/6</span>
+                                    <div class="stars">
+                                        <% 
+                                        const score = review.overallScore || review.score || 0;
+                                        for (let i = 1; i <= 6; i++) {
+                                            if (i <= Math.round(score)) { %>
+                                                ★
+                                            <% } else { %>
+                                                ☆
+                                            <% }
+                                        } %>
+                                    </div>
+                                    <div class="performance-level">
+                                        <% 
+                                        const performanceLevel = getPerformanceLevel(score);
+                                        %>
+                                        <span class="level-badge level-<%= performanceLevel.toLowerCase().replace(' ', '-') %>">
+                                            <%= performanceLevel %>
+                                        </span>
+                                    </div>
+                                </div>
+                                <% if (review.answers && review.answers.length > 0) { %>
+                                    <div class="review-details">
+                                        <h5>Question Ratings:</h5>
+                                        <% review.answers.forEach(answer => { %>
+                                            <div class="question-rating">
+                                                <span class="question-text"><%= answer.question ? answer.question.text : 'Question not found' %></span>
+                                                <span class="rating"><%= answer.rating %>/6</span>
+                                                <span class="category-badge category-<%= answer.question ? answer.question.category : 'unknown' %>">
+                                                    <%= answer.question ? answer.question.category.replace('_', ' ').toUpperCase() : 'UNKNOWN' %>
+                                                </span>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                <% } %>
+                                <div class="review-comments">
+                                    <h5>Comments:</h5>
+                                    <p><%= review.comments %></p>
+                                </div>
+                                <div class="review-date">
+                                    Reviewed on: <%= new Date(review.reviewDate).toLocaleDateString() %>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% if (allReviews.length === 0) { %>
+                            <p>No reviews submitted yet</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         Review Modal (unchanged) 
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Submit Review</h3>
+                    <span class="close" onclick="closeReviewModal()">&times;</span>
+                </div>
+                <form id="reviewForm" class="review-form">
+                    <input type="hidden" id="employeeId" name="employee">
+                    
+                    <div class="employee-details">
+                        <h4 id="employeeName"></h4>
+                        <p id="employeeIdDisplay"></p>
+                    </div>
+                    
+                    <% if (questions && questions.length > 0) { %>
+                        <div id="questionsContainer" class="questions-container">
+                            <% questions.forEach((question, index) => { %>
+                                <div class="question-group" data-department="<%= question.department ? question.department._id : 'global' %>">
+                                    <label class="question-label"><%= question.text %></label>
+                                    <span class="question-category category-<%= question.category %>">
+                                        <%= question.category.replace('_', ' ').toUpperCase() %>
+                                    </span>
+                                    <div class="rating-selector">
+                                        <% for (let rating = 1; rating <= 6; rating++) { %>
+                                            <label class="rating-option">
+                                                <input type="radio" name="question_<%= question._id %>" value="<%= rating %>" required>
+                                                <span class="rating-text"><%= rating %> - 
+                                                    <% if (rating === 1) { %>Ineffective Performance
+                                                    <% } else if (rating === 2) { %>Developing Performance
+                                                    <% } else if (rating === 3) { %>Standard Performance
+                                                    <% } else if (rating === 4) { %>Effective Performance
+                                                    <% } else if (rating === 5) { %>Superior Performance
+                                                    <% } else { %>Outstanding Performance<% } %>
+                                                </span>
+                                            </label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="no-questions">
+                            <p>No questions available. Please contact admin to add review questions.</p>
+                        </div>
+                    <% } %>
+                    
+                    <div class="form-group">
+                        <label for="comments">Overall Comments</label>
+                        <textarea id="comments" name="comments" rows="4" required 
+                            placeholder="Provide detailed feedback on the person's performance..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeReviewModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+         Self Assessment View Modal 
+        <div id="selfAssessmentViewModal" class="modal">
+          <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3>Employee Self Assessment</h3>
+                <span class="close" onclick="closeSelfAssessmentViewModal()">&times;</span>
+            </div>
+            <div id="selfAssessmentViewBody" class="review-details">
+                 Filled by JS 
+            </div>
+            <div class="form-actions" style="margin-top: 12px;">
+                <button type="button" class="btn btn-outline" onclick="closeSelfAssessmentViewModal()">Close</button>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        return true;
+    }
+
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabName + '-tab').classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function openReviewModal(employeeId, employeeName, employeeIdStr, role) {
+        document.getElementById('employeeId').value = employeeId;
+        document.getElementById('employeeName').textContent = employeeName;
+        document.getElementById('employeeIdDisplay').textContent = 'ID: ' + employeeIdStr + ' (' + role.toUpperCase() + ')';
+        
+        // Find employee's department ID from the data we have
+        let employeeDepartment = null;
+        
+        // Check in employeesToReview
+        <% employeesToReview.forEach(person => { %>
+            if ('<%= person._id %>' === employeeId) {
+                employeeDepartment = '<%= person.department ? person.department._id : null %>';
+            }
+        <% }) %>
+        
+        // Check in departmentHODsToReview
+        <% departmentHODsToReview.forEach(person => { %>
+            if ('<%= person._id %>' === employeeId) {
+                employeeDepartment = '<%= person.department ? person.department._id : null %>';
+            }
+        <% }) %>
+        
+        // Check in otherHODsToReview
+        <% otherHODsToReview.forEach(person => { %>
+            if ('<%= person._id %>' === employeeId) {
+                employeeDepartment = '<%= person.department ? person.department._id : null %>';
+            }
+        <% }) %>
+        
+        const questionGroups = document.querySelectorAll('.question-group');
+        questionGroups.forEach(group => {
+            const questionDept = group.getAttribute('data-department');
+            if (questionDept === 'global' || questionDept === employeeDepartment) {
+                group.style.display = 'block';
+                const radioInputs = group.querySelectorAll('input[type="radio"]');
+                radioInputs.forEach(input => input.required = true);
+            } else {
+                group.style.display = 'none';
+                const radioInputs = group.querySelectorAll('input[type="radio"]');
+                radioInputs.forEach(input => {
+                    input.required = false;
+                    input.checked = false;
+                });
+            }
+        });
+        
+        document.getElementById('reviewModal').style.display = 'block';
+    }
+
+    function closeReviewModal() {
+        document.getElementById('reviewModal').style.display = 'none';
+        document.getElementById('reviewForm').reset();
+    }
+
+    document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const employee = formData.get('employee');
+        const comments = formData.get('comments');
+        
+        const answers = [];
+        <% if (questions && questions.length > 0) { %>
+            <% questions.forEach(question => { %>
+                const rating_<%= question._id.toString().replace(/[^a-zA-Z0-9]/g, '_') %> = formData.get('question_<%= question._id %>');
+                if (rating_<%= question._id.toString().replace(/[^a-zA-Z0-9]/g, '_') %>) {
+                    answers.push({
+                        question: '<%= question._id %>',
+                        rating: parseInt(rating_<%= question._id.toString().replace(/[^a-zA-Z0-9]/g, '_') %>)
+                    });
+                }
+            <% }) %>
+        <% } %>
+        
+        if (!comments || comments.trim().length < 10) {
+            alert('Please provide detailed comments (at least 10 characters)');
+            return;
+        }
+        
+        try {
+            const response = await fetch('/hod/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    employee,
+                    answers: answers.length > 0 ? answers : null,
+                    comments
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('Review submitted successfully!');
+                location.reload();
+            } else {
+                alert('Error: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error submitting review:', error);
+            alert('Error submitting review. Please try again.');
+        }
+    });
+
+    // Self Assessment View
+    async function viewSelfAssessment(employeeId) {
+      try {
+        const resp = await fetch('/hod/self-assessment/' + employeeId + '?quarter=<%= encodeURIComponent(currentQuarter) %>');
+        const data = await resp.json();
+        const body = document.getElementById('selfAssessmentViewBody');
+        body.innerHTML = '';
+        if (!data.success) {
+          body.innerHTML = '<p style="color:#b91c1c;">' + (data.message || 'Not found') + '</p>';
+        } else {
+          const info = data.data;
+          const header = document.createElement('div');
+          header.innerHTML = '<p><strong>Employee:</strong> ' + info.employee.name + ' (' + info.employee.department + ')</p>'
+            + '<p><strong>Quarter:</strong> ' + info.quarter + '</p>'
+            + '<p><strong>Submitted:</strong> ' + new Date(info.submittedAt).toLocaleString() + '</p>';
+          body.appendChild(header);
+
+          const answersWrap = document.createElement('div');
+          answersWrap.style.marginTop = '8px';
+          if (Array.isArray(info.answers) && info.answers.length > 0) {
+            info.answers.forEach(a => {
+              const row = document.createElement('div');
+              row.className = 'question-rating';
+              const answerText = a.inputType === 'mcq' ? (a.responseOption || '-') :
+                                 a.inputType === 'text' ? (a.responseText || '-') :
+                                 (a.rating != null ? (a.rating + ' / 6') : '-');
+              row.innerHTML = '<span class="question-text">' + (a.questionText || 'Question') + '</span>'
+                + '<span class="rating">' + answerText + '</span>';
+              answersWrap.appendChild(row);
+            });
+          } else {
+            answersWrap.innerHTML = '<p>No answers provided.</p>';
+          }
+          body.appendChild(answersWrap);
+
+          const comments = document.createElement('div');
+          comments.style.marginTop = '8px';
+          comments.innerHTML = '<h5>Self Comments:</h5><p>' + (info.comments || '-') + '</p>';
+          body.appendChild(comments);
+        }
+        document.getElementById('selfAssessmentViewModal').style.display = 'block';
+      } catch (err) {
+        console.error(err);
+        alert('Error loading self assessment.');
+      }
+    }
+
+    function closeSelfAssessmentViewModal() {
+      document.getElementById('selfAssessmentViewModal').style.display = 'none';
+      document.getElementById('selfAssessmentViewBody').innerHTML = '';
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const modal1 = document.getElementById('reviewModal');
+        const modal2 = document.getElementById('selfAssessmentViewModal');
+        if (event.target === modal1) closeReviewModal();
+        if (event.target === modal2) closeSelfAssessmentViewModal();
+    }
+    </script>
+</body>
+</html>
