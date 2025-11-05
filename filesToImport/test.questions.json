@@ -1,0 +1,2688 @@
+[{
+  "_id": {
+    "$oid": "68b57a1668a4faadd60f4e16"
+  },
+  "text": "Training Hrs delivered ( Man Hrs)",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:48:54.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:48:54.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57bcf68a4faadd60f4e3a"
+  },
+  "text": "Training Hrs delivered ( Man Hrs)",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:56:15.998Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:56:15.998Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57be268a4faadd60f4e40"
+  },
+  "text": "Sales Growth post training",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:56:34.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:56:34.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57ce968a4faadd60f4e4c"
+  },
+  "text": "Target Achievement Region -FOFO",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T11:00:57.792Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T11:00:57.792Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5ecb6cc8e88b59646140"
+  },
+  "text": "Support & Issue Resolution Average response and resolution time for Power BI-related support",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:53:47.760Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:53:47.760Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5ef16cc8e88b5964614c"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:54:25.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:54:25.809Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5f2e6cc8e88b59646158"
+  },
+  "text": "On-Time Delivery Rate % of projects, modules, or releases delivered within agreed.\n",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:55:26.734Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:55:26.734Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba61ca6cc8e88b59646176"
+  },
+  "text": "On-Time Delivery Rate % of projects, modules, or releases delivered within agreed.",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:06:34.889Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:06:34.889Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62296cc8e88b5964617c"
+  },
+  "text": "Customer/Stakeholder\r\nSatisfaction Score Feedback rating on delivered features, usability, and overall value.",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:08:09.996Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:08:09.996Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba623d6cc8e88b59646182"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:08:29.303Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:08:29.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba625d6cc8e88b59646188"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:09:01.431Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:09:01.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62996cc8e88b59646194"
+  },
+  "text": "On-Time Delivery Rate % of projects, modules, or releases delivered within agreed.",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:10:01.170Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:10:01.170Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba63456cc8e88b596461ac"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:12:53.297Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:12:53.297Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66356cc8e88b59646206"
+  },
+  "text": "Average Resolution Time Time taken to resolve POS-related tickets or incidents.",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:25:25.827Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:25:25.827Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba665f6cc8e88b59646218"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:26:07.549Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:26:07.549Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66f06cc8e88b5964622a"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:28:32.863Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:28:32.863Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba670d6cc8e88b59646230"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:29:01.130Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:29:01.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6a2c6cc8e88b5964625a"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:42:20.470Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:42:20.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6ad66cc8e88b59646266"
+  },
+  "text": "Deployment Success Rate\r\nRatio of AI models successfully deployed into production without\r\nrollback or critical errors.",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:45:10.769Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:45:10.769Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6af26cc8e88b59646278"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:45:38.571Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:45:38.571Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa472620dd55a749b44ac"
+  },
+  "text": "Modules created",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:52:18.622Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:52:18.622Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa491620dd55a749b44b2"
+  },
+  "text": "Assesment New joinee ( 90 days-Monthly )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:52:49.420Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:52:49.420Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa501620dd55a749b44ca"
+  },
+  "text": "LMS - Nof of Hrs ( once goes live )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:54:41.041Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:54:41.041Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa55f620dd55a749b44d0"
+  },
+  "text": "Conversion Rate Improvement",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:56:15.619Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:56:15.619Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa63f620dd55a749b44e8"
+  },
+  "text": "Assesment New joinee ( 90 days-Monthly )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:59:59.403Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:59:59.403Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa813620dd55a749b4504"
+  },
+  "text": "LMS - Nof of Hrs ( once goes live )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:07:47.711Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:07:47.711Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfac23620dd55a749b450a"
+  },
+  "text": "No of stores trained",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:25:07.441Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:25:07.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfae53620dd55a749b4546"
+  },
+  "text": "Assesment New joinee ( 90 days-Monthly )",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:34:27.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:34:27.608Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb257620dd55a749b4580"
+  },
+  "text": "Rare sales",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:51:35.435Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:51:35.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb263620dd55a749b4586"
+  },
+  "text": "Post training feedback Rate",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:51:47.565Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:51:47.565Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb42d620dd55a749b459e"
+  },
+  "text": "Low performing BA's review",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:59:25.998Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:59:25.998Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57bef68a4faadd60f4e46"
+  },
+  "text": "Target Achievement Region -COCO",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:56:47.935Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:56:47.935Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5e376cc8e88b5964613a"
+  },
+  "text": "User Adoption Rate\r\nNumber/percentage of business users actively using published\r\nPower BI solutions.",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:51:19.900Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:51:19.900Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5fd66cc8e88b5964616a"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:58:14.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:58:14.824Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62ee6cc8e88b596461a6"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:11:26.426Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:11:26.426Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba63dd6cc8e88b596461be"
+  },
+  "text": "Average Resolution Time Time taken to resolve POS-related tickets or incidents.",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:15:25.119Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:15:25.119Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba65396cc8e88b596461e2"
+  },
+  "text": "Average Resolution Time Time taken to resolve POS-related tickets or incidents.",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:21:13.038Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:21:13.038Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66056cc8e88b596461fa"
+  },
+  "text": "First Call Resolution (FCR) Rate % of POS issues resolved in the first interaction without escalation.",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:24:37.055Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:24:37.055Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66226cc8e88b59646200"
+  },
+  "text": "User Satisfaction Score (CSAT) Feedback rating from store staff/users after support interactions.",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:25:06.553Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:25:06.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66456cc8e88b5964620c"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:25:41.428Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:25:41.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66e26cc8e88b59646224"
+  },
+  "text": "Defect Leakage Percentage of defects that escape testing and are reported in",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:28:18.376Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:28:18.376Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba672e6cc8e88b59646236"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:29:34.318Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:29:34.318Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba697d6cc8e88b5964623c"
+  },
+  "text": "Network Uptime / Availability (%) Measures how consistently the network is operational.",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:39:25.541Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:39:25.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba69e36cc8e88b59646248"
+  },
+  "text": "Infra setup in new store % success completion",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:41:07.251Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:41:07.251Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6a266cc8e88b59646254"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:42:14.206Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:42:14.206Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa411620dd55a749b449a"
+  },
+  "text": "Conversion Rate Improvement",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:50:41.903Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:50:41.903Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa4cb620dd55a749b44be"
+  },
+  "text": "NPS scrore ( Mystery audit )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:53:47.880Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:53:47.880Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa582620dd55a749b44d6"
+  },
+  "text": "Rare sales",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:56:50.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:56:50.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa606620dd55a749b44e2"
+  },
+  "text": "Modules created",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:59:02.336Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:59:02.336Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfad53620dd55a749b4510"
+  },
+  "text": "No of staff trained",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:30:11.064Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:30:11.064Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfad95620dd55a749b451c"
+  },
+  "text": "Sales Growth post training",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:31:17.801Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:31:17.801Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfae27620dd55a749b4534"
+  },
+  "text": "Post training feedback Rate",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:33:43.593Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:33:43.593Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfaf79620dd55a749b4556"
+  },
+  "text": "LMS - No of Hrs ( once goes live )",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:39:21.601Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:39:21.601Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb1c9620dd55a749b4568"
+  },
+  "text": "Training Hrs delivered ( Man Hrs)",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:49:13.387Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:49:13.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb201620dd55a749b457a"
+  },
+  "text": "Target Achievement Region - Sales",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:50:09.352Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:50:09.352Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57aea68a4faadd60f4e22"
+  },
+  "text": "Target Achievement Region -COCO",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:52:26.220Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:52:26.220Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57af668a4faadd60f4e28"
+  },
+  "text": "Target Achievement Region -FOFO",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:52:38.694Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:52:38.694Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57bab68a4faadd60f4e34"
+  },
+  "text": "No of staff trained",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:55:39.059Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:55:39.059Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5e186cc8e88b59646134"
+  },
+  "text": "Data Accuracy & Quality % of reports generated without errors or data mismatches.",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:50:48.578Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:50:48.578Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5f016cc8e88b59646152"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:54:41.201Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:54:41.201Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5fa86cc8e88b59646164"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:57:28.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:57:28.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62716cc8e88b5964618e"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a941d6053530ee63a0784e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:09:21.727Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:09:21.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62a86cc8e88b5964619a"
+  },
+  "text": "Customer/Stakeholder\r\nSatisfaction Score Feedback rating on delivered features, usability, and overall value.",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:10:16.304Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:10:16.304Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba62b36cc8e88b596461a0"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:10:27.896Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:10:27.896Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba64d36cc8e88b596461c4"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:19:31.919Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:19:31.919Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba64f36cc8e88b596461d0"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:20:03.963Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:20:03.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba650e6cc8e88b596461d6"
+  },
+  "text": "First Call Resolution (FCR) Rate % of POS issues resolved in the first interaction without escalation.",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:20:30.913Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:20:30.913Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba65286cc8e88b596461dc"
+  },
+  "text": "User Satisfaction Score (CSAT) Feedback rating from store staff/users after support interactions.",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:20:56.223Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:20:56.223Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba654e6cc8e88b596461e8"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:21:34.505Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:21:34.505Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba65aa6cc8e88b596461f4"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:23:06.763Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:23:06.763Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66556cc8e88b59646212"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:25:57.663Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:25:57.663Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba66d86cc8e88b5964621e"
+  },
+  "text": "Defect Detection Rate\r\nPercentage of defects identified during testing compared to those\r\nfound post-release.",
+  "department": {
+    "$oid": "68a941f8053530ee63a07855"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:28:08.746Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:28:08.746Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba69b76cc8e88b59646242"
+  },
+  "text": "Incident Volume & Resolution\r\nRate\r\nNumber of hardware/network issues reported vs. resolved within\r\nSLA.",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:40:23.189Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:40:23.189Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6ae76cc8e88b59646272"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:45:27.937Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:45:27.937Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa463620dd55a749b44a6"
+  },
+  "text": "Post training feedback Rate",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:52:03.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:52:03.178Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa4ea620dd55a749b44c4"
+  },
+  "text": "Quiz participation",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:54:18.348Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:54:18.348Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfad88620dd55a749b4516"
+  },
+  "text": "Training Hrs delivered ( Man Hrs)",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:31:04.422Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:31:04.422Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfadd9620dd55a749b4528"
+  },
+  "text": "Target Achievement Region - Sales",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:32:25.032Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:32:25.032Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfae0b620dd55a749b452e"
+  },
+  "text": "Rare sales",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:33:15.171Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:33:15.171Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfae31620dd55a749b453a"
+  },
+  "text": "Modules created",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:33:53.441Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:33:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfae48620dd55a749b4540"
+  },
+  "text": "Quiz Participation",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:34:16.468Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:34:16.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb1a3620dd55a749b455c"
+  },
+  "text": "No of stores trained",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:48:35.251Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:48:35.251Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb1e9620dd55a749b4574"
+  },
+  "text": "Target Achievement Region - Primary",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:49:45.476Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:49:45.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb273620dd55a749b458c"
+  },
+  "text": "Modules created",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:52:03.022Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:52:03.022Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb407620dd55a749b4598"
+  },
+  "text": "Assesment New joinee ( 90 days-Monthly )",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:58:47.678Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:58:47.678Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b579f068a4faadd60f4e0a"
+  },
+  "text": "No of stores trained",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:48:16.902Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:48:16.902Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57a0068a4faadd60f4e10"
+  },
+  "text": "No of staff trained",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:48:32.620Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:48:32.620Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57a6668a4faadd60f4e1c"
+  },
+  "text": "Sales Growth post training",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:50:14.403Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:50:14.403Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b57b3d68a4faadd60f4e2e"
+  },
+  "text": "No of stores trained",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T10:53:49.027Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T10:53:49.027Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5df96cc8e88b5964612e"
+  },
+  "text": "Dashboard/Report Development\r\nTimeliness % of dashboards and reports delivered within agreed timelines.",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:50:17.455Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:50:17.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5ee16cc8e88b59646146"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a8b5dffc5fa72db9a109ae"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:54:09.849Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:54:09.849Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5f476cc8e88b5964615e"
+  },
+  "text": "Customer/Stakeholder Satisfaction Score Feedback rating on delivered features, usability, and overall value.",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:55:51.989Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:55:51.989Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba5ff46cc8e88b59646170"
+  },
+  "text": "Behavior Communication skills, helping attitude etc",
+  "department": {
+    "$oid": "68a9353d053530ee63a0772c"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "behaviour",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T03:58:44.703Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T03:58:44.703Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba636e6cc8e88b596461b2"
+  },
+  "text": "First Call Resolution (FCR) Rate % of POS issues resolved in the first interaction without escalation.",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:13:34.810Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:13:34.810Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba639b6cc8e88b596461b8"
+  },
+  "text": "User Satisfaction Score (CSAT) Feedback rating from store staff/users after support interactions.",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:14:19.989Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:14:19.989Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba64de6cc8e88b596461ca"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a94246053530ee63a0786a"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:19:42.729Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:19:42.729Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba657d6cc8e88b596461ee"
+  },
+  "text": "Attendance Within company policy of timings and late comings",
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "attendance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:22:21.295Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:22:21.295Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6a126cc8e88b5964624e"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a94256053530ee63a07871"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:41:54.579Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:41:54.579Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6ab86cc8e88b59646260"
+  },
+  "text": "Model Accuracy & Performance\r\nPercentage improvement in AI model accuracy, precision, recall, or\r\nother relevant performance metrics.",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:44:40.703Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:44:40.703Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68ba6ade6cc8e88b5964626c"
+  },
+  "text": "Quiz 100% quiz attempted in the month",
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-05T04:45:18.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-05T04:45:18.832Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa43a620dd55a749b44a0"
+  },
+  "text": "Rare sales",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:51:22.649Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:51:22.649Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa4bb620dd55a749b44b8"
+  },
+  "text": "Google review ( based on no of bills / footfall generated for region)",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:53:31.458Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:53:31.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa594620dd55a749b44dc"
+  },
+  "text": "Post training feedback Rate",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T03:57:08.120Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T03:57:08.120Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa6ad620dd55a749b44ee"
+  },
+  "text": "Google review ( based on no of bills / footfall generated for region)",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:01:49.676Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:01:49.676Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa6bc620dd55a749b44f4"
+  },
+  "text": "NPS scrore ( Mystery audit )",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:02:04.727Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:02:04.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfa789620dd55a749b44fa"
+  },
+  "text": "Quiz participation",
+  "department": {
+    "$oid": "68b1423ba0346d613c9e3e65"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:05:29.131Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:05:29.131Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfadd1620dd55a749b4522"
+  },
+  "text": "Target Achievement Region - Primary",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:32:17.418Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:32:17.418Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfaf43620dd55a749b4550"
+  },
+  "text": "Low performing BA's review",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "review",
+  "inputType": "rating",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:38:27.391Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:38:27.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb1bb620dd55a749b4562"
+  },
+  "text": "No of staff trained",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:48:59.158Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:48:59.158Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb1d9620dd55a749b456e"
+  },
+  "text": "Sales Growth post training",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:49:29.024Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:49:29.024Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb32e620dd55a749b4592"
+  },
+  "text": "Quiz Participation",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "quiz",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:55:10.635Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:55:10.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68bfb445620dd55a749b45a4"
+  },
+  "text": "LMS - No of Hrs ( once goes live )",
+  "department": {
+    "$oid": "68b14228a0346d613c9e3e5e"
+  },
+  "assessmentType": "self",
+  "inputType": "text",
+  "options": [],
+  "category": "performance",
+  "isActive": true,
+  "createdBy": {
+    "$oid": "68a8b010fc5fa72db9a10982"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T04:59:49.924Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T04:59:49.924Z"
+  },
+  "__v": 0
+}]

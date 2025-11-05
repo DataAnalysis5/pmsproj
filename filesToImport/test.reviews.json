@@ -1,0 +1,1497 @@
+[{
+  "_id": {
+    "$oid": "68da445101a79cb51412e647"
+  },
+  "employee": {
+    "$oid": "68a9490e053530ee63a078b5"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "68da445101a79cb51412e648"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da445101a79cb51412e649"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da445101a79cb51412e64a"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da445101a79cb51412e64b"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "68da445101a79cb51412e64c"
+      }
+    }
+  ],
+  "overallScore": 4.6,
+  "comments": "He is technically strong and does have the potential to open the new challenges or tasks asked by the LT.\n\nHe has a good understanding still set, which makes him more focused towards the assigned goals.\n\nHis attitude as a team member is very nice and very quiet.\n\nHe is very supportive towards his office colleagues.\n\nHe should work on his communication skills more.\n\nHe should participate in other activities or tasks in a team as well.\n\nReally best for his feature.\n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T08:33:21.205Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T08:33:21.222Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T08:33:21.222Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da4b0001a79cb51412e7ec"
+  },
+  "employee": {
+    "$oid": "68a94d0e053530ee63a0791e"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da4b0001a79cb51412e7ed"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da4b0001a79cb51412e7ee"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da4b0001a79cb51412e7ef"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da4b0001a79cb51412e7f0"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da4b0001a79cb51412e7f1"
+      }
+    }
+  ],
+  "overallScore": 4.2,
+  "comments": "She is technically strong and does have the potential to open the new challenges or tasks asked by the LT. \nShe has a good understanding still set, which makes her more focused towards the assigned goals. \nHer attitude as a team member is very nice and very quiet. \nShe is very supportive towards her office colleagues. She should work on her communication skills bit more. \nShe should participate in other activities or tasks in a team as well. \n\nReally best for her feature. \nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:01:52.533Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:01:52.535Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:01:52.535Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da554a01a79cb51412e9ef"
+  },
+  "employee": {
+    "$oid": "68a95004053530ee63a0795d"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba66556cc8e88b59646212"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f0"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba665f6cc8e88b59646218"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f1"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66056cc8e88b596461fa"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f2"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66226cc8e88b59646200"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f3"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66356cc8e88b59646206"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f4"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66456cc8e88b5964620c"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da554a01a79cb51412e9f5"
+      }
+    }
+  ],
+  "overallScore": 4.5,
+  "comments": "He has a good understanding of the application we use.\n\nBe a senior person; he helps the entire time if they are stuck on any specific EMR stuff.\n\nHe is in very jollyy in nature.\n\nHe is always ready to take on challenging tasks, even in odd hours.\n\nHe should improve his communication skills as well as his behavior in the team area.\n\nHe is a person who is good and always ready to support.\n\nReally wish for his feature.\n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:45:46.881Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:45:46.883Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:45:46.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da571201a79cb51412eb8b"
+  },
+  "employee": {
+    "$oid": "68a94bc2053530ee63a07902"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba657d6cc8e88b596461ee"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb8c"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65aa6cc8e88b596461f4"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb8d"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba650e6cc8e88b596461d6"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb8e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65286cc8e88b596461dc"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb8f"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65396cc8e88b596461e2"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb90"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba654e6cc8e88b596461e8"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da571201a79cb51412eb91"
+      }
+    }
+  ],
+  "overallScore": 4.17,
+  "comments": "She has a good understanding of the application we use.\n\nShe is always ready to help people if they are stuck on relevant tasks.\n\nShe is good in nature.\n\nShe is always ready to take on challenging tasks.\n\nShe is always ready to learn new applications, which help our support system be more effective.\n\nShe is always ready to participate in office activities.\n\nReally wish for his feature.\n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:53:22.061Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:53:22.062Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:53:22.062Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da55c101a79cb51412eb3a"
+  },
+  "employee": {
+    "$oid": "68a94c89053530ee63a07917"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba657d6cc8e88b596461ee"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb3b"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65aa6cc8e88b596461f4"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb3c"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba650e6cc8e88b596461d6"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb3d"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65286cc8e88b596461dc"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb3e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65396cc8e88b596461e2"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb3f"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba654e6cc8e88b596461e8"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da55c101a79cb51412eb40"
+      }
+    }
+  ],
+  "overallScore": 4.17,
+  "comments": "He has a good understanding of the application we use.\n\nBe a senior person; he helps the entire time if they are stuck on any specific Kisna Force stuff.\n\nHe is in very good by nature.\n\nHe is always ready to take on challenging tasks, even in odd hours.\n\nHe should improve his communication skills.\n\nHe is a person who is good and always ready to support.\n\nReally wish for his feature.\n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:47:45.561Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:47:45.563Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:47:45.563Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da467201a79cb51412e66b"
+  },
+  "employee": {
+    "$oid": "68a94c07053530ee63a07910"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da467201a79cb51412e66c"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da467201a79cb51412e66d"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 2,
+      "_id": {
+        "$oid": "68da467201a79cb51412e66e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 2,
+      "_id": {
+        "$oid": "68da467201a79cb51412e66f"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da467201a79cb51412e670"
+      }
+    }
+  ],
+  "overallScore": 2.8,
+  "comments": "She is good as a team member.\n\nShe does have nice communication skills.\n\nHer technical skill set is ok, but she needs to improve on the same and try to do as much as on the POC side for improving her technical skill set.\n\nTry to minimize the ChatGPT or similar platform help while coding.\n\nHer attitude in the office is kind of ok;improve herself.\n\nSuggest she stick to the project timeline and participate in the team activities.\n\nReally best for his feature.",
+  "reviewDate": {
+    "$date": "2025-09-29T08:42:26.841Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T08:42:26.842Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T08:42:26.842Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da480801a79cb51412e6ae"
+  },
+  "employee": {
+    "$oid": "68a94d6e053530ee63a0792c"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da480801a79cb51412e6af"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da480801a79cb51412e6b0"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da480801a79cb51412e6b1"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da480801a79cb51412e6b2"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da480801a79cb51412e6b3"
+      }
+    }
+  ],
+  "overallScore": 4.6,
+  "comments": "He is technically strong and does have the potential to open the new challenges or tasks asked by the LT. \n\nHe does have good communication skills and has a nice understanding still set, which makes him more focused towards the assigned goals. \n\nHis attitude as a team member is kind of below normal, so he should think about the same and work accordingly.\n\nSometimes he lost his focus, which impacted his work a lot.\n\nHe is kind of supportive towards his office colleagues. \n\nHe should participate in other activities or tasks in a team as well. \n\nReally best for his feature. \n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T08:49:12.652Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T08:49:12.655Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T08:49:12.655Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da4d0201a79cb51412e81f"
+  },
+  "employee": {
+    "$oid": "68a94de5053530ee63a07941"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da4d0201a79cb51412e820"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da4d0201a79cb51412e821"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da4d0201a79cb51412e822"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "68da4d0201a79cb51412e823"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da4d0201a79cb51412e824"
+      }
+    }
+  ],
+  "overallScore": 3.8,
+  "comments": "He is technically strong and does have the potential to open the new challenges or tasks asked by the LT. \nHe does have good communication skills and has a nice understanding still set, which makes him more focused towards the assigned goals. \nHis attitude as a team member is good, but suggested him to make more involvement in the team. \nHe is kind of supportive towards his office colleagues. \nHe should participate in other activities or tasks in a team as well. \nReally best for his feature. \nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:10:26.953Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:10:26.955Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:10:26.955Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68da575101a79cb51412ebe2"
+  },
+  "employee": {
+    "$oid": "68a94a44053530ee63a078c3"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "quarter": "Q3 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba66556cc8e88b59646212"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe3"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba665f6cc8e88b59646218"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe4"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66056cc8e88b596461fa"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe5"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66226cc8e88b59646200"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe6"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66356cc8e88b59646206"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe7"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66456cc8e88b5964620c"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "68da575101a79cb51412ebe8"
+      }
+    }
+  ],
+  "overallScore": 4.17,
+  "comments": "She has a good understanding of the application we use.\n\nShe is always ready to help people if they are stuck on relevant tasks.\n\nShe is good in nature.\n\nShe is always ready to take on challenging tasks.\n\nShe is always ready to learn new applications, which help our support system be more effective.\n\nShe should work on her communication still.\n\nShe is always ready to participate in office activities.\n\nReally wish for his feature.\n\nVipin",
+  "reviewDate": {
+    "$date": "2025-09-29T09:54:25.070Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-29T09:54:25.071Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T09:54:25.071Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904bea2164b9e3de53e139b"
+  },
+  "employee": {
+    "$oid": "68a9490e053530ee63a078b5"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904bea2164b9e3de53e139c"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904bea2164b9e3de53e139d"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904bea2164b9e3de53e139e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904bea2164b9e3de53e139f"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904bea2164b9e3de53e13a0"
+      }
+    }
+  ],
+  "overallScore": 5.2,
+  "comments": "Technically strong with the potential to take on new challenges. This individual demonstrates a remarkable ability to adapt and thrive in environments. Their eagerness to learn and grow makes them an invaluable asset to any team. He has a good understanding of his skillset, which leads to a focus on assigned goals. Nice attitude, very supportive of colleagues. This positive demeanor fosters collaboration and enhances team cohesion. With a proactive approach to problem-solving, he consistently contributes innovative ideas that drive projects forward.\n\nNeeds to work on public engagement and his communication skills. Should participate in other activities or tasks within the team. By expanding his involvement in team discussions and seeking feedback from peers, he can further refine these skills. This will not only boost his confidence but also ensure that his valuable insights reach a broader audience, ultimately benefiting the entire team.",
+  "reviewDate": {
+    "$date": "2025-10-31T13:50:26.126Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T13:50:26.131Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T13:50:26.131Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904bf54164b9e3de53e1409"
+  },
+  "employee": {
+    "$oid": "68a94a44053530ee63a078c3"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba66556cc8e88b59646212"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140a"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba665f6cc8e88b59646218"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140b"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66056cc8e88b596461fa"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140c"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66226cc8e88b59646200"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140d"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66356cc8e88b59646206"
+      },
+      "rating": 3,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66456cc8e88b5964620c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904bf54164b9e3de53e140f"
+      }
+    }
+  ],
+  "overallScore": 4,
+  "comments": "Application Knowledge: Has a good understanding of the application used by the team.\nTeam Support: Always ready to help people who are stuck on relevant tasks (shows great collaboration).\nAttitude & Initiative: Good in nature and always ready to take on challenging tasks.\nLearning & Adaptability: Always ready to learn new applications, which makes the support system more effective.\nEngagement: Always ready to participate in office activities.\n\nAreas for Development - Communication Skills: She should work on her communication still (this is the single clear area identified for improvement).",
+  "reviewDate": {
+    "$date": "2025-10-31T13:53:24.189Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T13:53:24.190Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T13:53:24.190Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c019164b9e3de53e1471"
+  },
+  "employee": {
+    "$oid": "68a94bc2053530ee63a07902"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba657d6cc8e88b596461ee"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1472"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65aa6cc8e88b596461f4"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1473"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba650e6cc8e88b596461d6"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1474"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65286cc8e88b596461dc"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1475"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65396cc8e88b596461e2"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1476"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba654e6cc8e88b596461e8"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c019164b9e3de53e1477"
+      }
+    }
+  ],
+  "overallScore": 4.33,
+  "comments": "Strengths:\n\nTechnical Knowledge: She has a good understanding of the application the team uses, showing competence in her core role.\nCollaboration & Support: She is always ready to help people stuck on tasks, making her a great resource and team player.\nAttitude & Initiative: She is good in nature and actively seeks growth by being always ready to take on challenging tasks.\nLearning & Adaptability: She has a strong focus on continuous improvement, as she's always ready to learn new applications that boost the support system's effectiveness.\nTeam Engagement: Her willingness to participate in office activities shows strong commitment to the team culture.\n\nOverall Assessment\nThe feedback describes an eager, competent, and supportive individual who is a strong contributor to both the team's technical goals and its culture. She shows excellent initiative and a focus on continuous learning.\nSince this feedback is almost entirely positive, a good next step would be to discuss her career path and how to leverage her willingness to take on challenges for leadership or mentoring opportunities.",
+  "reviewDate": {
+    "$date": "2025-10-31T13:56:41.986Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T13:56:41.987Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T13:56:41.987Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c13f164b9e3de53e14df"
+  },
+  "employee": {
+    "$oid": "68a94ad0053530ee63a078d8"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9426f053530ee63a07878"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba62ee6cc8e88b596461a6"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c13f164b9e3de53e14e0"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba63456cc8e88b596461ac"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c13f164b9e3de53e14e1"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba62996cc8e88b59646194"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c13f164b9e3de53e14e2"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba62a86cc8e88b5964619a"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c13f164b9e3de53e14e3"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba62b36cc8e88b596461a0"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c13f164b9e3de53e14e4"
+      }
+    }
+  ],
+  "overallScore": 4,
+  "comments": "Strengths\nTechnical Competence: He has a good understanding of the application and is always ready to learn new applications to improve the support system.\nInitiative & Growth: He is always ready to take on challenging tasks, showing strong drive and a focus on growth.\nCollaboration & Attitude: He is always ready to help people with tasks and is good in nature.\nTeam Engagement: He is always ready to participate in office activities, contributing positively to the team culture.\n\nAreas for Development\nTwo specific areas are highlighted where the employee should focus his efforts:\nCommunication Skills: He needs to work on \"her communication still.\" (Note: There is a pronoun mismatch here, but the intent is clear that communication needs improvement).\nTechnical Skills: He should brush up his technical skills (suggesting that while his foundational understanding is good, his technical expertise could be sharpened).\n\nOverall Assessment\nThis feedback paints a picture of an eager, supportive, and proactive individual. He is an excellent team player who embraces challenges and learning. The focus for his development plan should be on refining his technical proficiency and improving his communication effectiveness so that he can better share his knowledge and take on more senior roles.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:01:35.666Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:01:35.667Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:01:35.667Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c1be164b9e3de53e1551"
+  },
+  "employee": {
+    "$oid": "68a94c07053530ee63a07910"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c1be164b9e3de53e1552"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c1be164b9e3de53e1553"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c1be164b9e3de53e1554"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c1be164b9e3de53e1555"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c1be164b9e3de53e1556"
+      }
+    }
+  ],
+  "overallScore": 4,
+  "comments": "Strengths\nTeamwork: She is good as a team member.\nCommunication: She does have nice communication skills.\n\nAreas for Development\nTechnical Skills: Her technical skill set is ok, but she needs to improve on it.\nActionable Step: She should try to do as much as possible on the Proof-of-Concept (POC) side to improve her technical skillset.\nOver-reliance on AI Tools: She needs to minimize the ChatGPT or similar platform help while coding. This suggests a need to develop self-sufficiency and deeper understanding of the code she writes.\nAttitude/Professionalism: Her attitude in the office is kind of ok; improve herself. This is vague but points to a need for more positive or proactive office conduct.\nDiscipline & Engagement:\nProject Management: She needs to stick to the project timeline.\nTeam Participation: She needs to participate in the team activities.\n\nOverall Assessment\nThis employee is a good communicator and team player, but her performance is being held back by a weak technical foundation and potentially lapses in professional attitude and discipline (timeline adherence, team participation).\nThe development plan should heavily focus on technical self-reliance (reducing reliance on AI) and project execution.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:03:42.420Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:03:42.420Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:03:42.420Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c258164b9e3de53e15c8"
+  },
+  "employee": {
+    "$oid": "68a94d0e053530ee63a0791e"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c258164b9e3de53e15c9"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c258164b9e3de53e15ca"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c258164b9e3de53e15cb"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c258164b9e3de53e15cc"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c258164b9e3de53e15cd"
+      }
+    }
+  ],
+  "overallScore": 5,
+  "comments": "Strengths\nTechnical Proficiency: She is technically strong and has the potential to open new challenges or tasks, showing readiness for growth.\nFocus & Understanding: She has a good understanding of her skillset, which makes her very focused towards the assigned goals.\nTeam Attitude: Her attitude is very nice and she is very supportive towards her office colleagues, making her a positive team member.\n\nAreas for Development\nCommunication: She needs to work on her communication skills a bit more. This is often tied to her being \"very quiet\" and suggests a need to be more vocal and visible.\nEngagement & Proactivity: She should participate in other activities or tasks in a team as well. This encourages her to broaden her scope beyond assigned goals and contribute more actively to general team initiatives.\n\nOverall Assessment\nShe is an excellent technical asset and a supportive colleague. Her biggest opportunity is to increase her visibility and influence by improving her communication and proactively engaging in broader team tasks. Doing so will help her fully realize her potential for taking on those \"new challenges.\"",
+  "reviewDate": {
+    "$date": "2025-10-31T14:06:16.444Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:06:16.444Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:06:16.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c304164b9e3de53e1644"
+  },
+  "employee": {
+    "$oid": "68a94d6e053530ee63a0792c"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c304164b9e3de53e1645"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c304164b9e3de53e1646"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c304164b9e3de53e1647"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c304164b9e3de53e1648"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c304164b9e3de53e1649"
+      }
+    }
+  ],
+  "overallScore": 4.4,
+  "comments": "Strengths\nTechnical & Potential: He is technically strong and has the potential to take on new challenges from the Leadership Team (LT).\nCommunication: He does have good communication skills.\nFocus on Goals: He has a nice understanding of his skill set, which helps him stay focused towards the assigned goals.\nSupportive: He is kind of supportive towards his office colleagues.\n\nCritical Areas for Development\nAttitude: His attitude as a team member is kind of below normal. This is a serious area that requires him to \"think about the same and work accordingly.\"\nFocus/Consistency: He sometimes loses his focus, which impacted his work a lot. This suggests inconsistent performance and discipline.\nEngagement: He should participate in other activities or tasks in a team as well. This indicates he is not fully engaged beyond his core assignments.\n\nOverall Assessment\nThis employee possesses the technical skills and communication ability to be a top performer, but his potential is being undermined by poor attitude and inconsistency in focus. Addressing his behavioral issues and improving his professional engagement are critical for his development and future success.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:09:08.921Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:09:08.921Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:09:08.921Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c372164b9e3de53e16c5"
+  },
+  "employee": {
+    "$oid": "68a94c89053530ee63a07917"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9422f053530ee63a07863"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba657d6cc8e88b596461ee"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16c6"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65aa6cc8e88b596461f4"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16c7"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba650e6cc8e88b596461d6"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16c8"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65286cc8e88b596461dc"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16c9"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba65396cc8e88b596461e2"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16ca"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba654e6cc8e88b596461e8"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c372164b9e3de53e16cb"
+      }
+    }
+  ],
+  "overallScore": 5.17,
+  "comments": "Strengths\nSenior Leadership & Support: As a senior person, he helps the entire team when they are stuck on \"Kisna Force stuff\" (suggesting specific, high-level technical knowledge).\nApplication Expertise: He has a good understanding of the application used by the team.\nAttitude & Commitment: He is very good by nature and always ready to take on challenging tasks, even in odd hours. This demonstrates outstanding dedication.\nReliability: He is a person who is good and always ready to support.\n\nArea for Development\nCommunication Skills: He should improve his communication skills.\n\nOverall Assessment\nThis individual is a highly respected and essential senior resource who provides critical technical support and shows impressive dedication to the team's goals, often working outside of standard hours.\nThe sole area for development, communication skills, should be seen as an opportunity to amplify his existing technical expertise and helpfulness. Improving communication will likely allow him to lead more effectively, mentor others, and better present his complex solutions.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:10:58.600Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:10:58.600Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:10:58.600Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c3e2164b9e3de53e174d"
+  },
+  "employee": {
+    "$oid": "68a94de5053530ee63a07941"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a8b5e9fc5fa72db9a109b4"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba6ae76cc8e88b59646272"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c3e2164b9e3de53e174e"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6af26cc8e88b59646278"
+      },
+      "rating": 4,
+      "_id": {
+        "$oid": "6904c3e2164b9e3de53e174f"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ab86cc8e88b59646260"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c3e2164b9e3de53e1750"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ad66cc8e88b59646266"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c3e2164b9e3de53e1751"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba6ade6cc8e88b5964626c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c3e2164b9e3de53e1752"
+      }
+    }
+  ],
+  "overallScore": 4.8,
+  "comments": "Key Strengths\nTechnical Proficiency: He is technically strong and has the potential to open new challenges or tasks, showing he's ready for more responsibility from the Leadership Team (LT).\nFocus & Understanding: He has a nice understanding of his skill set, ensuring he is highly focused towards the assigned goals.\nCommunication: He does have good communication skills.\nAttitude: His attitude as a team member is good.\nSupportive: He is kind of supportive towards his office colleagues.\n\nArea for Development: Engagement\nTeam Involvement: He is suggested to make more involvement in the team.\nProactive Participation: He should participate in other activities or tasks in a team as well.\n\nOverall Assessment\nThis individual is a competent, technically sound, and communicative asset who reliably hits his assigned goals. The core opportunity for him is to transition from being a reliable individual contributor to a proactive team influencer by increasing his engagement and visibility in broader team activities. This will help him unlock the \"new challenges\" mentioned by the LT.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:12:50.466Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:12:50.467Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:12:50.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6904c460164b9e3de53e17d9"
+  },
+  "employee": {
+    "$oid": "68a95004053530ee63a0795d"
+  },
+  "reviewer": {
+    "$oid": "68a94b17053530ee63a078e6"
+  },
+  "department": {
+    "$oid": "68a9421a053530ee63a0785c"
+  },
+  "quarter": "Q4 2025",
+  "isSelfAssessment": false,
+  "answers": [
+    {
+      "question": {
+        "$oid": "68ba66556cc8e88b59646212"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17da"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba665f6cc8e88b59646218"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17db"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66056cc8e88b596461fa"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17dc"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66226cc8e88b59646200"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17dd"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66356cc8e88b59646206"
+      },
+      "rating": 5,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17de"
+      }
+    },
+    {
+      "question": {
+        "$oid": "68ba66456cc8e88b5964620c"
+      },
+      "rating": 6,
+      "_id": {
+        "$oid": "6904c460164b9e3de53e17df"
+      }
+    }
+  ],
+  "overallScore": 5.17,
+  "comments": "Strengths\nSenior Expertise: As a senior person, he has a good understanding of the application and provides crucial support, helping the entire team with specific EMR stuff (Electronic Medical Records or a similar technical system).\nCommitment: He is always ready to take on challenging tasks, even in odd hours, demonstrating impressive dedication.\nAttitude & Support: He is very jolly in nature (suggesting a positive presence) and is generally good and always ready to support colleagues.\n\nAreas for Development\nCommunication Skills: He should improve his communication skills. This is a common area for senior technical experts to refine for better leadership and knowledge sharing.\nTeam Area Behavior: He should improve his behavior in the team area. This is a specific concern that suggests his actions or conduct in the shared workspace need adjustment to align with professional expectations.\n\nOverall Assessment\nThis individual is a highly valuable technical anchor due to his expertise, supportive nature, and commitment. However, his career progression is likely hampered by the need to refine his communication and, more importantly, address his behavior in the team setting. Focus should be placed on coaching him to maintain his technical excellence while adopting a more professional and appropriate team demeanor.",
+  "reviewDate": {
+    "$date": "2025-10-31T14:14:56.821Z"
+  },
+  "createdAt": {
+    "$date": "2025-10-31T14:14:56.822Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-31T14:14:56.822Z"
+  },
+  "__v": 0
+}]
