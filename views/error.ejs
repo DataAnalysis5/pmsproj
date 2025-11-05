@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (typeof user !== 'undefined' && user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="error-page">
+            <div class="error-container">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h1>Oops! Something went wrong</h1>
+                <p class="error-message"><%= message || 'An unexpected error occurred' %></p>
+                <div class="error-actions">
+                    <a href="javascript:history.back()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </a>
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        // Allow form submission to proceed
+        return true;
+    }
+    </script>
+</body>
+</html>
