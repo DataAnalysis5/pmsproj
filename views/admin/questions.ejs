@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Questions - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="admin-page">
+            <div class="page-header">
+                <h1>Manage Review Questions</h1>
+                <a href="/admin/dashboard" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+            
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h3>Add New Question</h3>
+                    <form action="/admin/questions" method="POST" class="admin-form">
+                        <div class="form-group">
+                            <label for="text">Question Text</label>
+                            <textarea id="text" name="text" rows="3" required 
+                                placeholder="Enter the review question..."></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="questionType">Question Type</label>
+                                <select id="questionType" name="questionType" required onchange="toggleInputTypeField()">
+                                    <option value="">Select Question Type</option>
+                                    <option value="review">Review Question (HOD gives)</option>
+                                    <option value="self-assessment">Self-Assessment Question</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="performance">Performance</option>
+                                    <option value="quiz">Quiz</option>
+                                    <option value="attendance">Attendance</option>
+                                    <option value="late_remark">Late Remark</option>
+                                    <option value="behaviour">Behaviour</option>
+                                    <option value="extra">Extra</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="department">Department (Optional)</label>
+                                <select id="department" name="department">
+                                    <option value="">Global (All Departments)</option>
+                                    <% departments.forEach(dept => { %>
+                                        <option value="<%= dept._id %>">
+                                            <% if (dept.parentDepartment) { %><%= dept.parentDepartment.name %> - <% } %><%= dept.name %>
+                                        </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+
+                            <!-- Added month dropdown to assign questions to specific months -->
+                            <div class="form-group">
+                                <label for="month">Month (Optional - leave blank for all months)</label>
+                                <select id="month" name="month">
+                                    <option value="">All Months</option>
+                                    <% for (let m = 1; m <= 12; m++) { %>
+                                        <option value="M<%= m %>">Month <%= m %> (M<%= m %>)</option>
+                                    <% } %>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="inputTypeGroup" style="display: none;">
+                                <label for="inputType">Input Type (for Self-Assessment)</label>
+                                <select id="inputType" name="inputType" onchange="toggleOptionsField()">
+                                    <option value="text">Short Text</option>
+                                    <option value="textarea">Long Text</option>
+                                    <option value="radio">Radio Buttons</option>
+                                    <option value="checkbox">Checkboxes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="optionsGroup" style="display: none;">
+                            <label for="options">Options (one per line, for Radio/Checkbox only)</label>
+                            <textarea id="options" name="options" rows="4" 
+                                placeholder="Option 1&#10;Option 2&#10;Option 3"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Question
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="admin-card">
+                    <h3>Existing Questions</h3>
+                    <div class="questions-list">
+                        <% questions.forEach(question => { %>
+                            <div class="question-item">
+                                <div class="question-header">
+                                    <span class="question-category category-<%= question.category %>">
+                                        <%= question.category.replace('_', ' ').toUpperCase() %>
+                                    </span>
+                                    <span class="question-type" style="background-color: <%= question.questionType === 'self-assessment' ? '#4CAF50' : '#2196F3' %>; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
+                                        <%= question.questionType === 'self-assessment' ? 'SELF-ASSESSMENT' : 'REVIEW' %>
+                                    </span>
+                                    <span class="question-scope">
+                                        <% if (question.department) { %>
+                                            <% if (question.department.parentDepartment) { %><%= question.department.parentDepartment.name %> - <% } %><%= question.department.name %>
+                                        <% } else { %>
+                                            Global
+                                        <% } %>
+                                    </span>
+                                    <!-- Added month display for questions -->
+                                    <% if (question.month) { %>
+                                        <span class="question-month" style="background-color: #FF9800; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
+                                            <%= question.month %>
+                                        </span>
+                                    <% } %>
+                                </div>
+                                <div class="question-text">
+                                    <%= question.text %>
+                                </div>
+                                <% if (question.questionType === 'self-assessment' && question.inputType) { %>
+                                    <div class="question-input-type" style="margin-top: 0.5rem; font-size: 0.85rem; color: #666;">
+                                        <strong>Input Type:</strong> <%= question.inputType %>
+                                        <% if ((question.inputType === 'radio' || question.inputType === 'checkbox') && question.options && question.options.length > 0) { %>
+                                            <div style="margin-top: 0.5rem; padding: 0.5rem; background-color: white; border-radius: 3px;">
+                                                <strong>Options:</strong>
+                                                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                                                    <% question.options.forEach(opt => { %>
+                                                        <li><%= opt %></li>
+                                                    <% }) %>
+                                                </ul>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+                                <div class="question-meta">
+                                    <small>Created by: <%= question.createdBy ? question.createdBy.name : 'System' %> on <%= new Date(question.createdAt).toLocaleDateString() %></small>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% if (questions.length === 0) { %>
+                            <p>No questions found</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function toggleInputTypeField() {
+        const questionType = document.getElementById('questionType').value;
+        const inputTypeGroup = document.getElementById('inputTypeGroup');
+        
+        if (questionType === 'self-assessment') {
+            inputTypeGroup.style.display = 'block';
+            toggleOptionsField();
+        } else {
+            inputTypeGroup.style.display = 'none';
+            document.getElementById('optionsGroup').style.display = 'none';
+        }
+    }
+
+    function toggleOptionsField() {
+        const inputType = document.getElementById('inputType').value;
+        const optionsGroup = document.getElementById('optionsGroup');
+        
+        if (inputType === 'radio' || inputType === 'checkbox') {
+            optionsGroup.style.display = 'block';
+        } else {
+            optionsGroup.style.display = 'none';
+        }
+    }
+
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        return true;
+    }
+    </script>
+</body>
+</html>
