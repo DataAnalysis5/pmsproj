@@ -119,6 +119,14 @@
                                 placeholder="Option 1&#10;Option 2&#10;Option 3"></textarea>
                         </div>
                         
+                        <!-- Added Editable Response checkbox -->
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" id="editableResponse" name="editableResponse">
+                                <span>Editable Response (Allow response changes after submission)</span>
+                            </label>
+                        </div>
+                        
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Add Question
                         </button>
@@ -167,6 +175,12 @@
                                                 </ul>
                                             </div>
                                         <% } %>
+                                    </div>
+                                <% } %>
+                                <!-- Display Editable Response status -->
+                                <% if (question.editableResponse) { %>
+                                    <div style="margin-top: 0.5rem; padding: 0.5rem; background-color: #E8F5E9; border-radius: 3px; font-size: 0.85rem; color: #2E7D32;">
+                                        <i class="fas fa-edit"></i> <strong>Editable Response</strong> - Responses can be modified after submission
                                     </div>
                                 <% } %>
                                 <div class="question-meta">
