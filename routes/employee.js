@@ -219,7 +219,7 @@ router.get("/self-assessment", async (req, res) => {
       questions,
       selectedMonth,
       availableMonths,
-      existingAssessment: existingAssessment ? true : false,
+      existingAssessment: existingAssessment ? existingAssessment : null,
       success: null,
       error: null,
     })
@@ -245,16 +245,44 @@ router.post("/self-assessment", async (req, res) => {
       return res.status(400).json({ success: false, message: "Employee department not found" })
     }
 
-    // Check if already submitted for this month
     const existingAssessment = await SelfAssessment.findOne({
       employee: employeeId,
       month: month,
     })
 
+    // If assessment exists, check if all questions are editable
     if (existingAssessment) {
-      return res
-        .status(400)
-        .json({ success: false, message: "You have already submitted your self-assessment for this month" })
+      // Get all questions and check if any are non-editable
+      const questionsInAssessment = existingAssessment.answers.map((a) => a.question)
+      const nonEditableQuestions = await Question.find({
+        _id: { $in: questionsInAssessment },
+        editableResponse: false,
+      })
+
+      if (nonEditableQuestions.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message: "You have already submitted your self-assessment for this month. Some responses cannot be edited.",
+        })
+      }
+
+      // Update existing assessment with new answers
+      existingAssessment.answers = []
+      Object.keys(answers).forEach((questionId) => {
+        const answer = answers[questionId]
+        if (answer) {
+          const processedAnswer = Array.isArray(answer) ? answer.join(", ") : answer
+          existingAssessment.answers.push({
+            question: questionId,
+            answer: processedAnswer,
+          })
+        }
+      })
+      existingAssessment.submittedDate = new Date()
+
+      await existingAssessment.save()
+      console.log("Self-assessment updated for employee:", employee.name, "Month:", month)
+      return res.json({ success: true, message: "Self-assessment updated successfully!" })
     }
 
     // Process answers - handle both single values and arrays (for checkboxes)
