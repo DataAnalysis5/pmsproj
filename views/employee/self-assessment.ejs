@@ -67,21 +67,55 @@
             
             <div class="admin-card" style="max-width: 900px; margin: 0 auto;">
                 <% if (selectedMonth && selectedMonth !== '') { %>
+                    <!-- Added check for existing assessment and show editing mode if present -->
+                    <% if (existingAssessment) { %>
+                        <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+                            <i class="fas fa-pencil-alt"></i> <strong>Edit Mode:</strong> You have already submitted your self-assessment for <%= selectedMonth %>. You can edit responses for questions marked as "Editable Response".
+                        </div>
+                    <% } %>
+                    
                     <form action="/employee/self-assessment" method="POST" class="admin-form" onsubmit="handleSubmit(event)">
                         <input type="hidden" name="month" value="<%= selectedMonth %>">
                         
                         <% questions.forEach((question, index) => { %>
-                            <div class="form-group" style="margin-bottom: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; border-left: 4px solid #007bff;">
-                                <label style="display: block; margin-bottom: 15px; font-weight: 600; font-size: 16px;">
-                                    <%= (index + 1) %>. <%= question.text %>
-                                </label>
+                            <!-- Get existing answer for this question if assessment exists -->
+                            <% 
+                                let existingAnswer = '';
+                                let isEditable = question.editableResponse;
+                                if (existingAssessment && existingAssessment.answers) {
+                                    const answerObj = existingAssessment.answers.find(a => a.question && a.question.toString() === question._id.toString());
+                                    if (answerObj) {
+                                        existingAnswer = answerObj.answer || '';
+                                    }
+                                }
+                            %>
+                            
+                            <div class="form-group" style="margin-bottom: 30px; padding: 20px; background-color: <% if (existingAssessment && !isEditable) { %>#fff3cd<% } else { %>#f9f9f9<% } %>; border-radius: 8px; border-left: 4px solid <% if (isEditable) { %>#28a745<% } else if (existingAssessment) { %>#ffc107<% } else { %>#007bff<% } %>;">
+                                <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 15px;">
+                                    <label style="display: block; font-weight: 600; font-size: 16px; flex: 1;">
+                                        <%= (index + 1) %>. <%= question.text %>
+                                    </label>
+                                    <!-- Show editable response indicator -->
+                                    <% if (isEditable) { %>
+                                        <span style="background-color: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; white-space: nowrap; margin-left: 1rem;">
+                                            <i class="fas fa-edit"></i> Editable
+                                        </span>
+                                    <% } else if (existingAssessment) { %>
+                                        <span style="background-color: #ffc107; color: #333; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; white-space: nowrap; margin-left: 1rem;">
+                                            <i class="fas fa-lock"></i> Locked
+                                        </span>
+                                    <% } %>
+                                </div>
                                 
+                                <!-- Disable fields if not editable and assessment exists -->
                                 <% if (question.inputType === 'radio') { %>
                                     <% question.options.forEach(option => { %>
                                         <div style="margin-bottom: 10px;">
                                             <input type="radio" id="q<%= question._id %>_<%= option %>" 
                                                    name="answers[<%= question._id %>]" 
-                                                   value="<%= option %>" 
+                                                   value="<%= option %>"
+                                                   <% if (existingAnswer === option) { %>checked<% } %>
+                                                   <% if (existingAssessment && !isEditable) { %>disabled<% } %>
                                                    required>
                                             <label for="q<%= question._id %>_<%= option %>" style="margin-left: 8px; font-weight: normal;">
                                                 <%= option %>
@@ -90,11 +124,16 @@
                                     <% }) %>
                                 
                                 <% } else if (question.inputType === 'checkbox') { %>
+                                    <% 
+                                        const existingAnswerArray = existingAnswer ? existingAnswer.split(', ') : [];
+                                    %>
                                     <% question.options.forEach(option => { %>
                                         <div style="margin-bottom: 10px;">
                                             <input type="checkbox" id="q<%= question._id %>_<%= option %>" 
                                                    name="answers[<%= question._id %>]" 
-                                                   value="<%= option %>">
+                                                   value="<%= option %>"
+                                                   <% if (existingAnswerArray.includes(option)) { %>checked<% } %>
+                                                   <% if (existingAssessment && !isEditable) { %>disabled<% } %>>
                                             <label for="q<%= question._id %>_<%= option %>" style="margin-left: 8px; font-weight: normal;">
                                                 <%= option %>
                                             </label>
@@ -106,13 +145,23 @@
                                               rows="5" 
                                               required 
                                               style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial, sans-serif;"
-                                              placeholder="Enter your response..."></textarea>
+                                              placeholder="Enter your response..."
+                                              <% if (existingAssessment && !isEditable) { %>disabled<% } %>><%= existingAnswer %></textarea>
                                 
                                 <% } else { %>
                                     <input type="text" name="answers[<%= question._id %>]" 
                                            required 
                                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"
-                                           placeholder="Enter your response...">
+                                           placeholder="Enter your response..."
+                                           value="<%= existingAnswer %>"
+                                           <% if (existingAssessment && !isEditable) { %>disabled<% } %>>
+                                <% } %>
+                                
+                                <!-- Show locked message for non-editable responses -->
+                                <% if (existingAssessment && !isEditable) { %>
+                                    <div style="margin-top: 10px; padding: 10px; background-color: #ffe8e8; border-radius: 4px; font-size: 0.9rem; color: #d9534f;">
+                                        <i class="fas fa-lock"></i> This response is locked and cannot be edited.
+                                    </div>
                                 <% } %>
                             </div>
                         <% }) %>
@@ -124,20 +173,14 @@
                         <% } %>
                         
                         <div style="display: flex; gap: 10px; margin-top: 30px;">
-                            <button type="submit" class="btn btn-primary" <% if (questions.length === 0 || existingAssessment) { %>disabled<% } %>>
-                                <i class="fas fa-check"></i> Submit Self-Assessment
+                            <button type="submit" class="btn btn-primary" <% if (questions.length === 0) { %>disabled<% } %>>
+                                <i class="fas fa-<% if (existingAssessment) { %>save<% } else { %>check<% } %>"></i> <% if (existingAssessment) { %>Update<% } else { %>Submit<% } %> Self-Assessment
                             </button>
                             <a href="/employee/dashboard" class="btn btn-outline">
                                 <i class="fas fa-times"></i> Cancel
                             </a>
                         </div>
                     </form>
-                    
-                    <% if (existingAssessment) { %>
-                        <div class="alert alert-info" style="margin-top: 1.5rem;">
-                            <i class="fas fa-info-circle"></i> You have already submitted your self-assessment for <%= selectedMonth %>.
-                        </div>
-                    <% } %>
                 <% } else { %>
                     <div class="alert alert-warning">
                         <i class="fas fa-exclamation-circle"></i> Please select a month above to begin your self-assessment.
