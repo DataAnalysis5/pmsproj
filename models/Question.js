@@ -38,6 +38,10 @@ const questionSchema = new mongoose.Schema(
         trim: true,
       },
     ],
+    editableResponse: {
+      type: Boolean,
+      default: false,
+    },
     isActive: {
       type: Boolean,
       default: true,
