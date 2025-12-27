@@ -297,7 +297,7 @@ router.post(
         })
       }
 
-      const { text, category, department, questionType, inputType, options, month } = req.body
+      const { text, category, department, questionType, inputType, options, month, editableResponse } = req.body
 
       const questionData = {
         text,
@@ -305,6 +305,7 @@ router.post(
         questionType,
         createdBy: req.session.user._id,
         isActive: true,
+        editableResponse: editableResponse === "on" || editableResponse === true,
       }
 
       if (month && month.trim() !== "") {
@@ -340,6 +341,8 @@ router.post(
         newQuestion.month || "All",
         "Type:",
         newQuestion.questionType,
+        "Editable Response:",
+        newQuestion.editableResponse,
       )
 
       res.redirect("/admin/questions")
