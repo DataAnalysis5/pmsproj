@@ -1,0 +1,980 @@
+const express = require("express")
+const bcrypt = require("bcryptjs")
+const { body, validationResult } = require("express-validator")
+const { requireAuth, requireRole } = require("../middleware/auth")
+const User = require("../models/User")
+const Department = require("../models/Department")
+const Review = require("../models/Review")
+const Question = require("../models/Question")
+
+const router = express.Router()
+
+// Apply admin role requirement to all routes
+router.use(requireAuth, requireRole(["admin"]))
+
+// Export CSV - All Reviews
+router.get("/export/reviews", async (req, res) => {
+  try {
+    const { quarter, department } = req.query
+
+    // Build query
+    const query = {}
+    if (quarter) query.quarter = quarter
+    if (department) query.department = department
+
+    // Get reviews with populated data
+    const reviews = await Review.find(query)
+      .populate("employee", "name employeeId email")
+      .populate("reviewer", "name employeeId")
+      .populate("department", "name")
+      .populate("answers.question", "text category")
+      .sort({ createdAt: -1 })
+
+    // Generate CSV content
+    let csvContent = "Employee Name,Employee ID,Email,Department,Quarter,Overall Score,Reviewer,Review Date,Comments\n"
+
+    reviews.forEach((review) => {
+      const employeeName = review.employee ? review.employee.name : "Unknown"
+      const employeeId = review.employee ? review.employee.employeeId : "Unknown"
+      const email = review.employee ? review.employee.email : "Unknown"
+      const department = review.department ? review.department.name : "Unknown"
+      const score = review.overallScore || review.score || "N/A"
+      const reviewer = review.reviewer ? review.reviewer.name : "Unknown"
+      const reviewDate = new Date(review.reviewDate).toLocaleDateString()
+      const comments = review.comments ? review.comments.replace(/"/g, '""').replace(/\n/g, " ") : ""
+
+      csvContent += `"${employeeName}","${employeeId}","${email}","${department}","${review.quarter}","${score}","${reviewer}","${reviewDate}","${comments}"\n`
+    })
+
+    // Set headers for CSV download
+    res.setHeader("Content-Type", "text/csv")
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="reviews_export_${new Date().toISOString().split("T")[0]}.csv"`,
+    )
+    res.send(csvContent)
+  } catch (error) {
+    console.error("Export reviews error:", error)
+    res.status(500).render("error", { message: "Error exporting reviews" })
+  }
+})
+
+// Export CSV - Employee Performance Summary
+router.get("/export/performance", async (req, res) => {
+  try {
+    const { quarter } = req.query
+    const currentQuarter = quarter || getCurrentMonth()
+
+    // Get all employees with their latest reviews
+    const employees = await User.find({
+      role: { $in: ["employee", "hod"] },
+      isActive: true,
+    }).populate("department", "name")
+
+    // Get reviews for the specified quarter
+    const reviews = await Review.find({ month: currentQuarter })
+      .populate("employee", "name employeeId email")
+      .populate("department", "name")
+
+    // Create performance summary
+    const performanceData = []
+
+    for (const employee of employees) {
+      const employeeReviews = reviews.filter((r) => r.employee && r.employee._id.toString() === employee._id.toString())
+
+      let avgScore = 0
+      const reviewCount = employeeReviews.length
+
+      if (reviewCount > 0) {
+        const totalScore = employeeReviews.reduce((sum, review) => {
+          return sum + (review.overallScore || review.score || 0)
+        }, 0)
+        avgScore = (totalScore / reviewCount).toFixed(2)
+      }
+
+      const performanceLevel = getPerformanceLevel(Number.parseFloat(avgScore))
+
+      performanceData.push({
+        name: employee.name,
+        employeeId: employee.employeeId,
+        email: employee.email,
+        department: employee.department ? employee.department.name : "Not Assigned",
+        role: employee.role.toUpperCase(),
+        avgScore: avgScore || "N/A",
+        reviewCount,
+        performanceLevel,
+        quarter: currentQuarter,
+      })
+    }
+
+    // Generate CSV content
+    let csvContent =
+      "Employee Name,Employee ID,Email,Department,Role,Average Score,Review Count,Performance Level,Quarter\n"
+
+    performanceData.forEach((emp) => {
+      csvContent += `"${emp.name}","${emp.employeeId}","${emp.email}","${emp.department}","${emp.role}","${emp.avgScore}","${emp.reviewCount}","${emp.performanceLevel}","${emp.quarter}"\n`
+    })
+
+    // Set headers for CSV download
+    res.setHeader("Content-Type", "text/csv")
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="performance_summary_${currentQuarter.replace(" ", "_")}_${new Date().toISOString().split("T")[0]}.csv"`,
+    )
+    res.send(csvContent)
+  } catch (error) {
+    console.error("Export performance error:", error)
+    res.status(500).render("error", { message: "Error exporting performance data" })
+  }
+})
+
+// Export CSV - Detailed Reviews
+router.get("/export/detailed-reviews", async (req, res) => {
+  try {
+    const { month } = req.query
+    const selectedMonth = month || getCurrentMonth()
+
+    // Get reviews for the specified month with all populated data
+    const reviews = await Review.find({ month: selectedMonth })
+      .populate("employee", "name employeeId email")
+      .populate("reviewer", "name employeeId")
+      .populate("department", "name")
+      .populate("answers.question", "text category")
+      .sort({ employee: 1, createdAt: -1 })
+
+    // Generate CSV content with detailed breakdown
+    let csvContent =
+      "Employee Name,Employee ID,Email,Department,Question,Question Category,Rating,Overall Score,Reviewer Name,Review Date\n"
+
+    reviews.forEach((review) => {
+      const employeeName = review.employee ? review.employee.name : "Unknown"
+      const employeeId = review.employee ? review.employee.employeeId : "Unknown"
+      const email = review.employee ? review.employee.email : "Unknown"
+      const department = review.department ? review.department.name : "Unknown"
+      const reviewer = review.reviewer ? review.reviewer.name : "Unknown"
+      const reviewDate = new Date(review.reviewDate || review.createdAt).toLocaleDateString()
+      const overallScore = review.overallScore || review.score || "N/A"
+
+      // If there are answers with questions, add one row per answer
+      if (review.answers && review.answers.length > 0) {
+        review.answers.forEach((answer) => {
+          const questionText = answer.question ? answer.question.text : "Unknown"
+          const questionCategory = answer.question ? answer.question.category : "Unknown"
+          const rating = answer.rating || "N/A"
+
+          csvContent += `"${employeeName}","${employeeId}","${email}","${department}","${questionText.replace(/"/g, '""')}","${questionCategory}","${rating}","${overallScore}","${reviewer}","${reviewDate}"\n`
+        })
+      } else {
+        // If no answers, still add a row with overall score
+        csvContent += `"${employeeName}","${employeeId}","${email}","${department}","","","","${overallScore}","${reviewer}","${reviewDate}"\n`
+      }
+    })
+
+    // Set headers for CSV download
+    res.setHeader("Content-Type", "text/csv")
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="detailed_reviews_${selectedMonth.replace(" ", "_")}_${new Date().toISOString().split("T")[0]}.csv"`,
+    )
+    res.send(csvContent)
+  } catch (error) {
+    console.error("Export detailed reviews error:", error)
+    res.status(500).render("error", { message: "Error exporting detailed reviews" })
+  }
+})
+
+// Admin Dashboard
+router.get("/dashboard", async (req, res) => {
+  try {
+    console.log("Loading admin dashboard...") // Debug log
+
+    // Get dashboard statistics
+    const totalEmployees = await User.countDocuments({ role: "employee", isActive: true })
+    const totalHODs = await User.countDocuments({ role: "hod", isActive: true })
+    const totalDepartments = await Department.countDocuments({ isActive: true })
+
+    // Check if Question model exists, if not set to 0
+    let totalQuestions = 0
+    try {
+      totalQuestions = await Question.countDocuments({ isActive: true })
+    } catch (questionError) {
+      console.log("Question model not found, setting totalQuestions to 0")
+      totalQuestions = 0
+    }
+
+    // Current month reviews
+    const currentMonth = getCurrentMonth()
+    const currentMonthReviews = await Review.countDocuments({ month: currentMonth })
+
+    // Average rating for current month (calculated from aggregated reviews) - Updated for 6-point scale
+    let avgRating = 0
+    try {
+      const avgRatingResult = await getAverageRatings(currentMonth)
+      avgRating = avgRatingResult.length > 0 ? avgRatingResult[0].avgRating.toFixed(2) : 0
+    } catch (avgError) {
+      console.log("Error calculating average rating:", avgError.message)
+      avgRating = 0
+    }
+
+    // Department-wise statistics
+    let departmentStats = []
+    try {
+      departmentStats = await getDepartmentStats(currentMonth)
+    } catch (deptError) {
+      console.log("Error getting department stats:", deptError.message)
+      departmentStats = []
+    }
+
+    // Monthly trends (last 12 months)
+    let monthlyTrends = []
+    try {
+      monthlyTrends = await getMonthlyTrends()
+    } catch (trendError) {
+      console.log("Error getting monthly trends:", trendError.message)
+      monthlyTrends = []
+    }
+
+    console.log("Dashboard data loaded successfully") // Debug log
+
+    res.render("admin/dashboard", {
+      totalEmployees,
+      totalHODs,
+      totalDepartments,
+      totalQuestions,
+      currentMonthReviews,
+      avgRating,
+      departmentStats,
+      monthlyTrends,
+      currentMonth,
+    })
+  } catch (error) {
+    console.error("Admin dashboard error:", error)
+    res.status(500).render("error", {
+      message: "Error loading dashboard: " + error.message,
+      user: req.session.user || null,
+    })
+  }
+})
+
+// Questions Management
+router.get("/questions", async (req, res) => {
+  try {
+    const questions = await Question.find({ isActive: true })
+      .populate("department", "name")
+      .populate("createdBy", "name")
+      .sort({ createdAt: -1 })
+    const departments = await Department.find({ isActive: true })
+    res.render("admin/questions", { questions, departments })
+  } catch (error) {
+    console.error("Questions error:", error)
+    res.status(500).render("error", { message: "Error loading questions" })
+  }
+})
+
+// Add Question - Updated categories and types
+router.post(
+  "/questions",
+  [
+    body("text").trim().notEmpty().withMessage("Question text is required"),
+    body("category")
+      .isIn(["performance", "quiz", "attendance", "late_remark", "behaviour", "extra"])
+      .withMessage("Valid category is required"),
+    body("questionType").isIn(["review", "self-assessment"]).withMessage("Valid question type is required"),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const questions = await Question.find({ isActive: true })
+          .populate("department", "name")
+          .populate("createdBy", "name")
+          .sort({ createdAt: -1 })
+        const departments = await Department.find({ isActive: true })
+        return res.render("admin/questions", {
+          questions,
+          departments,
+          error: errors.array()[0].msg,
+        })
+      }
+
+      const { text, category, department, questionType, inputType, options, month, editableResponse } = req.body
+
+      const questionData = {
+        text,
+        category,
+        questionType,
+        createdBy: req.session.user._id,
+        isActive: true,
+        editableResponse: editableResponse === "on" || editableResponse === true,
+      }
+
+      if (month && month.trim() !== "") {
+        questionData.month = month
+        console.log("Question assigned to month:", month)
+      }
+
+      if (questionType === "self-assessment") {
+        questionData.inputType = inputType || "text"
+        if (inputType === "radio" || inputType === "checkbox") {
+          if (typeof options === "string") {
+            questionData.options = options.split("\n").filter((opt) => opt.trim() !== "")
+          } else if (Array.isArray(options)) {
+            questionData.options = options.filter((opt) => opt.trim() !== "")
+          }
+        }
+      }
+
+      if (department && department.trim() !== "") {
+        questionData.department = department
+        console.log("Question assigned to department ID:", department)
+      } else {
+        console.log("Question created as global (no department assigned)")
+      }
+
+      const newQuestion = await Question.create(questionData)
+      console.log(
+        "Question created:",
+        newQuestion.text,
+        "for department:",
+        newQuestion.department || "Global",
+        "Month:",
+        newQuestion.month || "All",
+        "Type:",
+        newQuestion.questionType,
+        "Editable Response:",
+        newQuestion.editableResponse,
+      )
+
+      res.redirect("/admin/questions")
+    } catch (error) {
+      console.error("Add question error:", error)
+      const questions = await Question.find({ isActive: true })
+        .populate("department", "name")
+        .populate("createdBy", "name")
+        .sort({ createdAt: -1 })
+      const departments = await Department.find({ isActive: true })
+
+      res.render("admin/questions", {
+        questions,
+        departments,
+        error: "Error adding question",
+      })
+    }
+  },
+)
+
+// Departments Management - Updated for sub-departments and multiple HODs
+router.get("/departments", async (req, res) => {
+  try {
+    // Get all departments with their parent departments and HODs
+    const departments = await Department.find({ isActive: true })
+      .populate("parentDepartment", "name")
+      .populate("hods", "name employeeId")
+      .sort({ parentDepartment: 1, name: 1 })
+
+    const hods = await User.find({ role: "hod", isActive: true })
+
+    // Get main departments (no parent) for the parent dropdown
+    const mainDepartments = await Department.find({
+      isActive: true,
+      parentDepartment: null,
+    }).sort({ name: 1 })
+
+    res.render("admin/departments", { departments, hods, mainDepartments })
+  } catch (error) {
+    console.error("Departments error:", error)
+    res.status(500).render("error", { message: "Error loading departments" })
+  }
+})
+
+// Add Department - Updated for sub-departments and multiple HODs
+router.post(
+  "/departments",
+  [body("name").trim().notEmpty().withMessage("Department name is required"), body("description").trim().optional()],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .populate("hods", "name employeeId")
+          .sort({ parentDepartment: 1, name: 1 })
+        const hods = await User.find({ role: "hod", isActive: true })
+        const mainDepartments = await Department.find({
+          isActive: true,
+          parentDepartment: null,
+        }).sort({ name: 1 })
+        return res.render("admin/departments", {
+          departments,
+          hods,
+          mainDepartments,
+          error: errors.array()[0].msg,
+        })
+      }
+
+      const { name, description, parentDepartment, hods } = req.body
+
+      const departmentData = {
+        name,
+        description: description || "",
+        isActive: true,
+      }
+
+      // Handle parent department
+      if (parentDepartment && parentDepartment.trim() !== "") {
+        departmentData.parentDepartment = parentDepartment
+      }
+
+      // Handle multiple HODs
+      if (hods) {
+        if (Array.isArray(hods)) {
+          departmentData.hods = hods.filter((hod) => hod.trim() !== "")
+        } else if (hods.trim() !== "") {
+          departmentData.hods = [hods]
+        }
+      }
+
+      const newDepartment = await Department.create(departmentData)
+      console.log("Department created:", newDepartment) // Debug log
+
+      res.redirect("/admin/departments")
+    } catch (error) {
+      console.error("Add department error:", error)
+      const departments = await Department.find({ isActive: true })
+        .populate("parentDepartment", "name")
+        .populate("hods", "name employeeId")
+        .sort({ parentDepartment: 1, name: 1 })
+      const hods = await User.find({ role: "hod", isActive: true })
+      const mainDepartments = await Department.find({
+        isActive: true,
+        parentDepartment: null,
+      }).sort({ name: 1 })
+
+      let errorMessage = "Error adding department"
+      if (error.code === 11000) {
+        errorMessage = "Department name already exists in this parent department"
+      }
+
+      res.render("admin/departments", {
+        departments,
+        hods,
+        mainDepartments,
+        error: errorMessage,
+      })
+    }
+  },
+)
+
+// Edit Department - GET - Updated for sub-departments and multiple HODs
+router.get("/departments/:id/edit", async (req, res) => {
+  try {
+    const department = await Department.findById(req.params.id)
+      .populate("parentDepartment", "name")
+      .populate("hods", "name employeeId")
+    if (!department) {
+      return res.status(404).render("error", { message: "Department not found" })
+    }
+
+    const hods = await User.find({ role: "hod", isActive: true })
+    const mainDepartments = await Department.find({
+      isActive: true,
+      parentDepartment: null,
+      _id: { $ne: req.params.id }, // Exclude current department from parent options
+    }).sort({ name: 1 })
+
+    res.render("admin/edit-department", { department, hods, mainDepartments })
+  } catch (error) {
+    console.error("Edit department GET error:", error)
+    res.status(500).render("error", { message: "Error loading department" })
+  }
+})
+
+// Edit Department - POST - Updated for sub-departments and multiple HODs
+router.post(
+  "/departments/:id/edit",
+  [body("name").trim().notEmpty().withMessage("Department name is required"), body("description").trim().optional()],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const department = await Department.findById(req.params.id)
+          .populate("parentDepartment", "name")
+          .populate("hods", "name employeeId")
+        const hods = await User.find({ role: "hod", isActive: true })
+        const mainDepartments = await Department.find({
+          isActive: true,
+          parentDepartment: null,
+          _id: { $ne: req.params.id },
+        }).sort({ name: 1 })
+        return res.render("admin/edit-department", {
+          department,
+          hods,
+          mainDepartments,
+          error: errors.array()[0].msg,
+        })
+      }
+
+      const { name, description, parentDepartment, hods } = req.body
+
+      const updateData = {
+        name,
+        description: description || "",
+      }
+
+      // Handle parent department
+      if (parentDepartment && parentDepartment.trim() !== "") {
+        updateData.parentDepartment = parentDepartment
+      } else {
+        updateData.parentDepartment = null
+      }
+
+      // Handle multiple HODs
+      if (hods) {
+        if (Array.isArray(hods)) {
+          updateData.hods = hods.filter((hod) => hod.trim() !== "")
+        } else if (hods.trim() !== "") {
+          updateData.hods = [hods]
+        } else {
+          updateData.hods = []
+        }
+      } else {
+        updateData.hods = []
+      }
+
+      await Department.findByIdAndUpdate(req.params.id, updateData)
+      console.log("Department updated:", name) // Debug log
+
+      res.redirect("/admin/departments")
+    } catch (error) {
+      console.error("Edit department POST error:", error)
+      const department = await Department.findById(req.params.id)
+        .populate("parentDepartment", "name")
+        .populate("hods", "name employeeId")
+      const hods = await User.find({ role: "hod", isActive: true })
+      const mainDepartments = await Department.find({
+        isActive: true,
+        parentDepartment: null,
+        _id: { $ne: req.params.id },
+      }).sort({ name: 1 })
+
+      let errorMessage = "Error updating department"
+      if (error.code === 11000) {
+        errorMessage = "Department name already exists in this parent department"
+      }
+
+      res.render("admin/edit-department", {
+        department,
+        hods,
+        mainDepartments,
+        error: errorMessage,
+      })
+    }
+  },
+)
+
+// Employees Management
+router.get("/employees", async (req, res) => {
+  try {
+    const employees = await User.find({
+      role: { $in: ["employee", "hod"] },
+      isActive: true,
+    }).populate("department")
+    const departments = await Department.find({ isActive: true })
+      .populate("parentDepartment", "name")
+      .sort({ parentDepartment: 1, name: 1 })
+    res.render("admin/employees", { employees, departments })
+  } catch (error) {
+    console.error("Employees error:", error)
+    res.status(500).render("error", { message: "Error loading employees" })
+  }
+})
+
+// Add Employee - Enhanced debugging
+router.post(
+  "/employees",
+  [
+    body("name").trim().notEmpty().withMessage("Name is required"),
+    body("email").isEmail().normalizeEmail().withMessage("Valid email is required"),
+    body("employeeId").trim().notEmpty().withMessage("Employee ID is required"),
+    body("role").isIn(["employee", "hod"]).withMessage("Valid role is required"),
+    body("department").notEmpty().withMessage("Department is required"),
+    body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const employees = await User.find({
+          role: { $in: ["employee", "hod"] },
+          isActive: true,
+        }).populate("department")
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+        return res.render("admin/employees", {
+          employees,
+          departments,
+          error: errors.array()[0].msg,
+        })
+      }
+
+      const { name, email, employeeId, role, department, hodLevel, password } = req.body
+
+      console.log("=== ADD EMPLOYEE DEBUG ===")
+      console.log("Attempting to create employee with:")
+      console.log("- Name:", name)
+      console.log("- Email:", email)
+      console.log("- Employee ID:", employeeId)
+      console.log("- Role:", role)
+      console.log("- Department:", department)
+
+      // Check if employeeId already exists
+      const existingEmployee = await User.findOne({ employeeId: employeeId })
+      if (existingEmployee) {
+        console.log("❌ Employee ID already exists:", existingEmployee.name, existingEmployee.employeeId)
+        const employees = await User.find({
+          role: { $in: ["employee", "hod"] },
+          isActive: true,
+        }).populate("department")
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+        return res.render("admin/employees", {
+          employees,
+          departments,
+          error: "Employee ID already exists",
+        })
+      }
+
+      console.log("✅ Employee ID is unique, proceeding with creation...")
+
+      const hashedPassword = await bcrypt.hash(password, 12)
+
+      const userData = {
+        name,
+        email,
+        employeeId,
+        role,
+        department,
+        password: hashedPassword,
+        isActive: true,
+      }
+
+      if (role === "hod" && hodLevel) {
+        userData.hodLevel = hodLevel
+      }
+
+      console.log("Creating user with data:", { ...userData, password: "[HIDDEN]" })
+
+      const newUser = await User.create(userData)
+      console.log("✅ Employee created successfully:", newUser.name, newUser.employeeId, newUser.role)
+
+      res.redirect("/admin/employees")
+    } catch (error) {
+      console.error("❌ Add employee error:", error)
+      console.log("Error code:", error.code)
+      console.log("Error message:", error.message)
+      console.log("Error keyPattern:", error.keyPattern)
+      console.log("Error keyValue:", error.keyValue)
+
+      const employees = await User.find({
+        role: { $in: ["employee", "hod"] },
+        isActive: true,
+      }).populate("department")
+      const departments = await Department.find({ isActive: true })
+        .populate("parentDepartment", "name")
+        .sort({ parentDepartment: 1, name: 1 })
+
+      let errorMessage = "Error adding employee"
+      if (error.code === 11000) {
+        if (error.keyPattern && error.keyPattern.employeeId) {
+          errorMessage = "Employee ID already exists"
+        } else if (error.keyPattern && error.keyPattern.email) {
+          errorMessage = "Email constraint error - please run the database fix script"
+        } else {
+          errorMessage = `Duplicate key error: ${JSON.stringify(error.keyPattern)}`
+        }
+      }
+
+      res.render("admin/employees", {
+        employees,
+        departments,
+        error: errorMessage,
+      })
+    }
+  },
+)
+
+// Edit Employee - GET
+router.get("/employees/:id/edit", async (req, res) => {
+  try {
+    const employee = await User.findById(req.params.id).populate("department")
+    if (!employee) {
+      return res.status(404).render("error", { message: "Employee not found" })
+    }
+
+    const departments = await Department.find({ isActive: true })
+      .populate("parentDepartment", "name")
+      .sort({ parentDepartment: 1, name: 1 })
+    res.render("admin/edit-employee", { employee, departments })
+  } catch (error) {
+    console.error("Edit employee GET error:", error)
+    res.status(500).render("error", { message: "Error loading employee" })
+  }
+})
+
+// Edit Employee - POST - Enhanced debugging
+router.post(
+  "/employees/:id/edit",
+  [
+    body("name").trim().notEmpty().withMessage("Name is required"),
+    body("email").isEmail().normalizeEmail().withMessage("Valid email is required"),
+    body("employeeId").trim().notEmpty().withMessage("Employee ID is required"),
+    body("role").isIn(["employee", "hod"]).withMessage("Valid role is required"),
+    body("department").notEmpty().withMessage("Department is required"),
+    body("password").optional().isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const employee = await User.findById(req.params.id).populate("department")
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+        return res.render("admin/edit-employee", {
+          employee,
+          departments,
+          error: errors.array()[0].msg,
+        })
+      }
+
+      const { name, email, employeeId, role, department, hodLevel, password } = req.body
+
+      console.log("=== EDIT EMPLOYEE DEBUG ===")
+      console.log("Attempting to update employee ID:", req.params.id)
+      console.log("New data:")
+      console.log("- Name:", name)
+      console.log("- Email:", email)
+      console.log("- Employee ID:", employeeId)
+      console.log("- Role:", role)
+      console.log("- Department:", department)
+
+      // Check if employeeId already exists (excluding current user)
+      const existingEmployee = await User.findOne({
+        employeeId: employeeId,
+        _id: { $ne: req.params.id },
+      })
+      if (existingEmployee) {
+        console.log("❌ Employee ID already exists:", existingEmployee.name, existingEmployee.employeeId)
+        const employee = await User.findById(req.params.id).populate("department")
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+        return res.render("admin/edit-employee", {
+          employee,
+          departments,
+          error: "Employee ID already exists",
+        })
+      }
+
+      console.log("✅ Employee ID is unique, proceeding with update...")
+
+      const updateData = {
+        name,
+        email,
+        employeeId,
+        role,
+        department,
+      }
+
+      if (role === "hod" && hodLevel) {
+        updateData.hodLevel = hodLevel
+      } else {
+        updateData.hodLevel = null
+      }
+
+      // Only update password if provided
+      if (password && password.trim() !== "") {
+        updateData.password = await bcrypt.hash(password, 12)
+      }
+
+      console.log("Updating user with data:", {
+        ...updateData,
+        password: updateData.password ? "[HIDDEN]" : "Not updated",
+      })
+
+      await User.findByIdAndUpdate(req.params.id, updateData)
+      console.log("✅ Employee updated successfully:", name, role)
+
+      res.redirect("/admin/employees")
+    } catch (error) {
+      console.error("❌ Edit employee error:", error)
+      console.log("Error code:", error.code)
+      console.log("Error message:", error.message)
+      console.log("Error keyPattern:", error.keyPattern)
+      console.log("Error keyValue:", error.keyValue)
+
+      const employee = await User.findById(req.params.id).populate("department")
+      const departments = await Department.find({ isActive: true })
+        .populate("parentDepartment", "name")
+        .sort({ parentDepartment: 1, name: 1 })
+
+      let errorMessage = "Error updating employee"
+      if (error.code === 11000) {
+        if (error.keyPattern && error.keyPattern.employeeId) {
+          errorMessage = "Employee ID already exists"
+        } else if (error.keyPattern && error.keyPattern.email) {
+          errorMessage = "Email constraint error - please run the database fix script"
+        } else {
+          errorMessage = `Duplicate key error: ${JSON.stringify(error.keyPattern)}`
+        }
+      }
+
+      res.render("admin/edit-employee", {
+        employee,
+        departments,
+        error: errorMessage,
+      })
+    }
+  },
+)
+
+// Helper function to get current month
+function getCurrentMonth() {
+  const month = new Date().getMonth() + 1
+  const year = new Date().getFullYear()
+  return `M${month} ${year}`
+}
+
+// Helper function to get monthly trends
+async function getMonthlyTrends() {
+  try {
+    const trends = []
+    const currentDate = new Date()
+
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1)
+      const month = date.getMonth() + 1
+      const year = date.getFullYear()
+
+      const monthStr = `M${month} ${year}`
+
+      try {
+        const avgResult = await getAverageRatings(monthStr)
+        const reviewCount = await Review.countDocuments({ month: monthStr })
+
+        trends.push({
+          month: monthStr,
+          avgRating: avgResult.length > 0 ? avgResult[0].avgRating.toFixed(2) : 0,
+          reviewCount: reviewCount,
+        })
+      } catch (monthError) {
+        console.log(`Error getting data for month ${monthStr}:`, monthError.message)
+        trends.push({
+          month: monthStr,
+          avgRating: 0,
+          reviewCount: 0,
+        })
+      }
+    }
+
+    return trends
+  } catch (error) {
+    console.log("Error in getMonthlyTrends:", error.message)
+    return []
+  }
+}
+
+// Helper function to get average ratings (aggregated by employee) - Updated for 6-point scale
+async function getAverageRatings(month) {
+  try {
+    return await Review.aggregate([
+      { $match: { month } },
+      {
+        $addFields: {
+          effectiveScore: {
+            $cond: {
+              if: { $gt: ["$overallScore", 0] },
+              then: "$overallScore",
+              else: { $ifNull: ["$score", 0] },
+            },
+          },
+        },
+      },
+      {
+        $group: {
+          _id: "$employee",
+          avgScore: { $avg: "$effectiveScore" },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          avgRating: { $avg: "$avgScore" },
+        },
+      },
+    ])
+  } catch (error) {
+    console.log("Error in getAverageRatings:", error.message)
+    return []
+  }
+}
+
+// Helper function to get department statistics
+async function getDepartmentStats(month) {
+  try {
+    return await Review.aggregate([
+      { $match: { month } },
+      {
+        $addFields: {
+          effectiveScore: {
+            $cond: {
+              if: { $gt: ["$overallScore", 0] },
+              then: "$overallScore",
+              else: { $ifNull: ["$score", 0] },
+            },
+          },
+        },
+      },
+      {
+        $group: {
+          _id: { employee: "$employee", department: "$department" },
+          avgScore: { $avg: "$effectiveScore" },
+        },
+      },
+      {
+        $lookup: {
+          from: "departments",
+          localField: "_id.department",
+          foreignField: "_id",
+          as: "dept",
+        },
+      },
+      { $unwind: "$dept" },
+      {
+        $group: {
+          _id: "$dept.name",
+          avgRating: { $avg: "$avgScore" },
+          reviewCount: { $sum: 1 },
+        },
+      },
+      { $sort: { avgRating: -1 } },
+    ])
+  } catch (error) {
+    console.log("Error in getDepartmentStats:", error.message)
+    return []
+  }
+}
+
+// Helper function to get performance level
+function getPerformanceLevel(score) {
+  if (score >= 6) return "Outstanding Performance"
+  if (score >= 5) return "Superior Performance"
+  if (score >= 4) return "Effective Performance"
+  if (score >= 3) return "Standard Performance"
+  if (score >= 2) return "Developing Performance"
+  return "Ineffective Performance"
+}
+
+module.exports = router
