@@ -171,7 +171,7 @@ async function createDefaultAdmin() {
 
       console.log("Default admin user created successfully:")
       console.log("Email:", adminUser.email)
-      console.log("Password: admin123")
+      console.log("Password: ")
     } else {
       console.log("Admin user already exists:")
       console.log("Email:", adminExists.email)
@@ -186,3 +186,4 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
