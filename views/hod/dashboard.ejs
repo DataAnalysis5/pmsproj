@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOD Dashboard - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <h1>HOD Dashboard - <%= department.name %></h1>
+                <p>Current Quarter: <%= currentQuarter %></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3><%= totalEmployees %></h3>
+                        <p>Department Employees</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3><%= totalHODs %></h3>
+                        <p>Other HODs</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3><%= currentQuarterReviews %></h3>
+                        <p>Reviews Completed</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3><%= avgRating %></h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card <%= (pendingEmployeeReviews + pendingHODReviews) > 0 ? 'stat-warning' : '' %>">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3><%= pendingEmployeeReviews + pendingHODReviews %></h3>
+                        <p>Pending Reviews</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Recent Reviews</h3>
+                    <div class="recent-reviews">
+                        <% recentReviews.forEach(review => { %>
+                            <div class="review-item">
+                                <div class="review-employee">
+                                    <strong><%= review.employee.name %></strong>
+                                    <span class="employee-id">(<%= review.employee.employeeId %>)</span>
+                                </div>
+                                <div class="review-details">
+                                    <span class="review-score"><%= review.overallScore || review.score || 'N/A' %>/6 ⭐</span>
+                                    <span class="review-quarter"><%= review.quarter %></span>
+                                </div>
+                                <div class="review-date">
+                                    <%= new Date(review.reviewDate).toLocaleDateString() %>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% if (recentReviews.length === 0) { %>
+                            <p>No reviews yet</p>
+                        <% } %>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <a href="/hod/reviews" class="action-btn">
+                            <div>
+                                <i class="fas fa-edit"></i>
+                                <span>Review People</span>
+                            </div>
+                            <% if ((pendingEmployeeReviews + pendingHODReviews) > 0) { %>
+                                <span class="badge"><%= pendingEmployeeReviews + pendingHODReviews %></span>
+                            <% } %>
+                        </a>
+                        <div class="export-actions" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+                            <h4 style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 0.9rem;">Export Data</h4>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <a href="/hod/export/reviews" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                                    <i class="fas fa-download"></i> Export Reviews
+                                </a>
+                                <a href="/hod/export/performance" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+                                    <i class="fas fa-chart-bar"></i> Export Performance
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        // Allow form submission to proceed
+        return true;
+    }
+    </script>
+</body>
+</html>
