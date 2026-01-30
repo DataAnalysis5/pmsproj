@@ -79,6 +79,15 @@
                     
                     <div class="form-row">
                         <div class="form-group">
+                            <label for="reviewTargetType">Review Target Type (For Review Questions)</label>
+                            <select id="reviewTargetType" name="reviewTargetType">
+                                <option value="employees" <%= question.reviewTargetType === 'employees' ? 'selected' : '' %>>Employees</option>
+                                <option value="department-hods" <%= question.reviewTargetType === 'department-hods' ? 'selected' : '' %>>Department HODs</option>
+                                <option value="other-hods" <%= question.reviewTargetType === 'other-hods' ? 'selected' : '' %>>Other HODs</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="department">Department (Optional)</label>
                             <select id="department" name="department">
                                 <option value="">Global (All Departments)</option>

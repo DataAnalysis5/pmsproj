@@ -80,6 +80,15 @@
                         
                         <div class="form-row">
                             <div class="form-group">
+                                <label for="reviewTargetType">Review Target Type (For Review Questions)</label>
+                                <select id="reviewTargetType" name="reviewTargetType">
+                                    <option value="employees">Employees</option>
+                                    <option value="department-hods">Department HODs</option>
+                                    <option value="other-hods">Other HODs</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="department">Department (Optional)</label>
                                 <select id="department" name="department">
                                     <option value="">Global (All Departments)</option>
@@ -177,6 +186,14 @@
                                     <span class="question-type" style="background-color: <%= question.questionType === 'self-assessment' ? '#4CAF50' : '#2196F3' %>; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
                                         <%= question.questionType === 'self-assessment' ? 'SELF-ASSESSMENT' : 'REVIEW' %>
                                     </span>
+                                    <% if (question.questionType === 'review' && question.reviewTargetType) { %>
+                                        <span class="question-target" style="background-color: #FF6B6B; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
+                                            <% if (question.reviewTargetType === 'employees') { %>FOR: Employees
+                                            <% } else if (question.reviewTargetType === 'department-hods') { %>FOR: Department HODs
+                                            <% } else if (question.reviewTargetType === 'other-hods') { %>FOR: Other HODs
+                                            <% } %>
+                                        </span>
+                                    <% } %>
                                     <span class="question-scope">
                                         <% if (question.department) { %>
                                             <% if (question.department.parentDepartment) { %><%= question.department.parentDepartment.name %> - <% } %><%= question.department.name %>

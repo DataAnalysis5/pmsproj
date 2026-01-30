@@ -1208,4 +1208,229 @@ function getPerformanceLevel(score) {
   return "Ineffective Performance"
 }
 
+// Manage Questions - GET
+router.get("/questions", async (req, res) => {
+  try {
+    const questions = await Question.find({ isActive: true })
+      .populate("department", "name parentDepartment")
+      .populate("department.parentDepartment", "name")
+      .populate("createdBy", "name")
+      .sort({ createdAt: -1 })
+
+    const departments = await Department.find({ isActive: true })
+      .populate("parentDepartment", "name")
+      .sort({ parentDepartment: 1, name: 1 })
+
+    res.render("admin/questions", { questions, departments, user: req.session.user })
+  } catch (error) {
+    console.error("Manage questions error:", error)
+    res.status(500).render("error", { message: "Error loading questions", user: req.session.user })
+  }
+})
+
+// Add Question - POST
+router.post(
+  "/questions",
+  [
+    body("text").trim().notEmpty().withMessage("Question text is required"),
+    body("questionType").isIn(["review", "self-assessment"]).withMessage("Invalid question type"),
+    body("category").isIn(["performance", "quiz", "attendance", "late_remark", "behaviour", "extra"]).withMessage("Invalid category"),
+    body("reviewTargetType")
+      .optional()
+      .isIn(["employees", "department-hods", "other-hods"])
+      .withMessage("Invalid review target type"),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const questions = await Question.find({ isActive: true })
+          .populate("department", "name parentDepartment")
+          .populate("createdBy", "name")
+          .sort({ createdAt: -1 })
+
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+
+        return res.render("admin/questions", {
+          questions,
+          departments,
+          error: errors.array()[0].msg,
+          user: req.session.user,
+        })
+      }
+
+      const { text, questionType, category, department, month, inputType, options, editableResponse, reviewTargetType } = req.body
+
+      // Process options
+      let processedOptions = []
+      if (options && options.trim()) {
+        processedOptions = options
+          .split("\n")
+          .map((opt) => opt.trim())
+          .filter((opt) => opt.length > 0)
+      }
+
+      const question = new Question({
+        text,
+        questionType,
+        category,
+        department: department && department.trim() !== "" ? department : null,
+        month: month && month.trim() !== "" ? month : null,
+        inputType: questionType === "self-assessment" ? inputType : "text",
+        options: processedOptions,
+        editableResponse: editableResponse === "on" || editableResponse === true,
+        reviewTargetType: reviewTargetType || "employees",
+        createdBy: req.session.user._id,
+      })
+
+      await question.save()
+      console.log("Question created successfully:", question.text)
+
+      res.redirect("/admin/questions")
+    } catch (error) {
+      console.error("Create question error:", error)
+      const questions = await Question.find({ isActive: true })
+        .populate("department", "name parentDepartment")
+        .populate("createdBy", "name")
+        .sort({ createdAt: -1 })
+
+      const departments = await Department.find({ isActive: true })
+        .populate("parentDepartment", "name")
+        .sort({ parentDepartment: 1, name: 1 })
+
+      res.render("admin/questions", {
+        questions,
+        departments,
+        error: "Error creating question: " + error.message,
+        user: req.session.user,
+      })
+    }
+  },
+)
+
+// Edit Question - GET
+router.get("/questions/:id/edit", async (req, res) => {
+  try {
+    const question = await Question.findById(req.params.id)
+      .populate("department", "name parentDepartment")
+      .populate("createdBy", "name")
+
+    if (!question) {
+      return res.status(404).render("error", {
+        message: "Question not found",
+        user: req.session.user,
+      })
+    }
+
+    const departments = await Department.find({ isActive: true })
+      .populate("parentDepartment", "name")
+      .sort({ parentDepartment: 1, name: 1 })
+
+    res.render("admin/edit-question", { question, departments, user: req.session.user })
+  } catch (error) {
+    console.error("Edit question GET error:", error)
+    res.status(500).render("error", { message: "Error loading question", user: req.session.user })
+  }
+})
+
+// Edit Question - POST
+router.post(
+  "/questions/:id/edit",
+  [
+    body("text").trim().notEmpty().withMessage("Question text is required"),
+    body("questionType").isIn(["review", "self-assessment"]).withMessage("Invalid question type"),
+    body("category").isIn(["performance", "quiz", "attendance", "late_remark", "behaviour", "extra"]).withMessage("Invalid category"),
+    body("reviewTargetType")
+      .optional()
+      .isIn(["employees", "department-hods", "other-hods"])
+      .withMessage("Invalid review target type"),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        const question = await Question.findById(req.params.id)
+          .populate("department", "name parentDepartment")
+          .populate("createdBy", "name")
+
+        const departments = await Department.find({ isActive: true })
+          .populate("parentDepartment", "name")
+          .sort({ parentDepartment: 1, name: 1 })
+
+        return res.render("admin/edit-question", {
+          question,
+          departments,
+          error: errors.array()[0].msg,
+          user: req.session.user,
+        })
+      }
+
+      const { text, questionType, category, department, month, inputType, options, editableResponse, reviewTargetType } = req.body
+
+      // Process options
+      let processedOptions = []
+      if (options && options.trim()) {
+        processedOptions = options
+          .split("\n")
+          .map((opt) => opt.trim())
+          .filter((opt) => opt.length > 0)
+      }
+
+      const updateData = {
+        text,
+        questionType,
+        category,
+        department: department && department.trim() !== "" ? department : null,
+        month: month && month.trim() !== "" ? month : null,
+        inputType: questionType === "self-assessment" ? inputType : "text",
+        options: processedOptions,
+        editableResponse: editableResponse === "on" || editableResponse === true,
+        reviewTargetType: reviewTargetType || "employees",
+      }
+
+      await Question.findByIdAndUpdate(req.params.id, updateData)
+      console.log("Question updated successfully")
+
+      res.redirect("/admin/questions")
+    } catch (error) {
+      console.error("Edit question POST error:", error)
+      const question = await Question.findById(req.params.id)
+        .populate("department", "name parentDepartment")
+        .populate("createdBy", "name")
+
+      const departments = await Department.find({ isActive: true })
+        .populate("parentDepartment", "name")
+        .sort({ parentDepartment: 1, name: 1 })
+
+      res.render("admin/edit-question", {
+        question,
+        departments,
+        error: "Error updating question: " + error.message,
+        user: req.session.user,
+      })
+    }
+  },
+)
+
+// Delete Question
+router.post("/questions/:id/delete", async (req, res) => {
+  try {
+    const question = await Question.findById(req.params.id)
+
+    if (!question) {
+      return res.json({ success: false, message: "Question not found" })
+    }
+
+    await Question.findByIdAndUpdate(req.params.id, { isActive: false })
+
+    console.log("Question deleted successfully:", question.text)
+    res.json({ success: true, message: "Question deleted successfully" })
+  } catch (error) {
+    console.error("Delete question error:", error)
+    res.json({ success: false, message: "Error deleting question: " + error.message })
+  }
+})
+
 module.exports = router
