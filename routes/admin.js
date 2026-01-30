@@ -421,6 +421,7 @@ router.post(
       .isIn(["performance", "quiz", "attendance", "late_remark", "behaviour", "extra"])
       .withMessage("Valid category is required"),
     body("questionType").isIn(["review", "self-assessment"]).withMessage("Valid question type is required"),
+    body("questionFor").isIn(["employee", "hod"]).withMessage("Valid question target is required"),
   ],
   async (req, res) => {
     try {
@@ -438,12 +439,13 @@ router.post(
         })
       }
 
-      const { text, category, department, questionType, inputType, options, month, editableResponse } = req.body
+      const { text, category, department, questionType, inputType, options, month, editableResponse, questionFor } = req.body
 
       const questionData = {
         text,
         category,
         questionType,
+        questionFor: questionFor || "employee", // Default to employee for backward compatibility
         createdBy: req.session.user._id,
         isActive: true,
         editableResponse: editableResponse === "on" || editableResponse === true,
@@ -476,6 +478,8 @@ router.post(
       console.log(
         "Question created:",
         newQuestion.text,
+        "for:",
+        newQuestion.questionFor || "employee",
         "for department:",
         newQuestion.department || "Global",
         "Month:",
@@ -523,7 +527,7 @@ router.get("/questions/:id/edit", async (req, res) => {
 // Edit Question - Update
 router.post("/questions/:id/edit", async (req, res) => {
   try {
-    const { text, category, department, questionType, inputType, options, month, editableResponse } = req.body
+    const { text, category, department, questionType, inputType, options, month, editableResponse, questionFor } = req.body
 
     const question = await Question.findById(req.params.id)
     if (!question) {
@@ -534,6 +538,7 @@ router.post("/questions/:id/edit", async (req, res) => {
     question.text = text
     question.category = category
     question.questionType = questionType
+    question.questionFor = questionFor || "employee" // Default to employee for backward compatibility
     question.editableResponse = editableResponse === "on" || editableResponse === true
 
     // Update month

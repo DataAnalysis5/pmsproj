@@ -267,12 +267,13 @@ router.get("/self-assessment", async (req, res) => {
       availableMonths.push(`M${month} ${year}`)
     }
 
-    // Get self-assessment questions for HOD's department
+    // Get self-assessment questions for HOD's department (only for HODs)
     const questions = await Question.find({
       questionType: "self-assessment",
+      questionFor: "hod",
       isActive: true,
       $or: [
-        { department: null }, // Global questions
+        { department: null }, // Global questions for HODs
         { department: hod.department._id }, // Questions for HOD's department
       ],
     })
@@ -475,10 +476,13 @@ router.get("/reviews", async (req, res) => {
     const otherHODsToReview = otherHODs.filter((hod) => !reviewedIds.some((id) => id.toString() === hod._id.toString()))
 
     // Get questions for departments this HOD is assigned to, plus global questions
-    let questions = []
+    // Separate questions for employees vs HODs
+    let employeeQuestions = []
+    let hodQuestions = []
     try {
-      questions = await Question.find({
+      employeeQuestions = await Question.find({
         questionType: "review",
+        questionFor: "employee",
         $or: [
           { department: null }, // Global questions
           { department: { $in: allAssignedDepartmentIds } }, // Questions for assigned departments
@@ -488,11 +492,35 @@ router.get("/reviews", async (req, res) => {
         .populate("department", "name parentDepartment")
         .sort({ category: 1, createdAt: 1 })
 
-      console.log(`Found ${questions.length} review questions for assigned departments`)
+      hodQuestions = await Question.find({
+        questionType: "review",
+        questionFor: "hod",
+        $or: [
+          { department: null }, // Global questions for HODs
+          { department: { $in: allAssignedDepartmentIds } }, // Questions for assigned departments HODs
+        ],
+        isActive: true,
+      })
+        .populate("department", "name parentDepartment")
+        .sort({ category: 1, createdAt: 1 })
+
+      console.log(`Found ${employeeQuestions.length} review questions for employees and ${hodQuestions.length} review questions for HODs`)
     } catch (questionError) {
       console.log("Question model not found, using empty questions array")
-      questions = []
+      employeeQuestions = []
+      hodQuestions = []
     }
+
+    // Combine questions but tag them for frontend filtering
+    const questions = []
+    employeeQuestions.forEach((q) => {
+      q.targetUser = "employee"
+      questions.push(q)
+    })
+    hodQuestions.forEach((q) => {
+      q.targetUser = "hod"
+      questions.push(q)
+    })
 
     // Get all reviews by this reviewer
     const allReviews = await Review.find({ reviewer: req.session.user._id })

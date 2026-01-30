@@ -27,6 +27,11 @@ const questionSchema = new mongoose.Schema(
       enum: ["review", "self-assessment"],
       default: "review",
     },
+    questionFor: {
+      type: String,
+      enum: ["employee", "hod"],
+      default: "employee",
+    },
     inputType: {
       type: String,
       enum: ["radio", "checkbox", "text", "textarea", "numeric"],

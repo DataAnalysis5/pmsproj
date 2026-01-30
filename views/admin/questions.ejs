@@ -56,10 +56,19 @@
                         
                         <div class="form-row">
                             <div class="form-group">
+                                <label for="questionFor">Question For</label>
+                                <select id="questionFor" name="questionFor" required onchange="toggleDepartmentField()">
+                                    <option value="">Select Target User</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="hod">HOD (Low Level)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="questionType">Question Type</label>
                                 <select id="questionType" name="questionType" required onchange="toggleInputTypeField()">
                                     <option value="">Select Question Type</option>
-                                    <option value="review">Review Question (HOD gives)</option>
+                                    <option value="review">Review Question</option>
                                     <option value="self-assessment">Self-Assessment Question</option>
                                 </select>
                             </div>
@@ -79,8 +88,10 @@
                         </div>
                         
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="department">Department (Optional)</label>
+                            <div class="form-group" id="departmentGroup" style="display: block;">
+                                <label for="department">
+                                    <span id="departmentLabel">Department (Optional - for Employees)</span>
+                                </label>
                                 <select id="department" name="department">
                                     <option value="">Global (All Departments)</option>
                                     <% departments.forEach(dept => { %>
@@ -177,6 +188,9 @@
                                     <span class="question-type" style="background-color: <%= question.questionType === 'self-assessment' ? '#4CAF50' : '#2196F3' %>; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
                                         <%= question.questionType === 'self-assessment' ? 'SELF-ASSESSMENT' : 'REVIEW' %>
                                     </span>
+                                    <span class="question-target" style="background-color: <%= question.questionFor === 'hod' ? '#FF5722' : '#9C27B0' %>; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">
+                                        <%= question.questionFor === 'hod' ? 'HOD (Low Level)' : 'EMPLOYEE' %>
+                                    </span>
                                     <span class="question-scope">
                                         <% if (question.department) { %>
                                             <% if (question.department.parentDepartment) { %><%= question.department.parentDepartment.name %> - <% } %><%= question.department.name %>
@@ -245,6 +259,26 @@
 
     <script src="/js/main.js"></script>
     <script>
+    function toggleDepartmentField() {
+        const questionFor = document.getElementById('questionFor').value;
+        const departmentGroup = document.getElementById('departmentGroup');
+        const departmentLabel = document.getElementById('departmentLabel');
+        const departmentSelect = document.getElementById('department');
+        
+        if (questionFor === 'hod') {
+            departmentGroup.style.display = 'block';
+            departmentLabel.textContent = 'Department - Select department HODs (Low Level) to create questions for';
+            departmentSelect.required = true;
+        } else if (questionFor === 'employee') {
+            departmentGroup.style.display = 'block';
+            departmentLabel.textContent = 'Department (Optional - for Employees)';
+            departmentSelect.required = false;
+        } else {
+            departmentGroup.style.display = 'none';
+            departmentSelect.required = false;
+        }
+    }
+
     function toggleInputTypeField() {
         const questionType = document.getElementById('questionType').value;
         const inputTypeGroup = document.getElementById('inputTypeGroup');

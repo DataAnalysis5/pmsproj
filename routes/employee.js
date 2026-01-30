@@ -196,9 +196,10 @@ router.get("/self-assessment", async (req, res) => {
       availableMonths.push(`M${month} ${year}`)
     }
 
-    // Get self-assessment questions for this employee's department
+    // Get self-assessment questions for this employee's department (only for employees)
     const questions = await Question.find({
       questionType: "self-assessment",
+      questionFor: { $in: ["employee", undefined, null] }, // Default to employee questions
       isActive: true,
       $or: [
         { department: null }, // Global questions
