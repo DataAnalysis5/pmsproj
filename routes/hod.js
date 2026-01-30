@@ -1,4 +1,5 @@
 const express = require("express")
+const bcrypt = require("bcryptjs")
 const { body, validationResult } = require("express-validator")
 const { requireAuth, requireRole, requireDepartmentAccess } = require("../middleware/auth")
 const User = require("../models/User")
@@ -154,6 +155,236 @@ router.get("/dashboard", async (req, res) => {
       message: "Error loading dashboard: " + error.message,
       user: req.session.user || null,
     })
+  }
+})
+
+// HOD Change Password
+router.get("/change-password", (req, res) => {
+  try {
+    res.render("hod/change-password", {
+      error: null,
+      success: null,
+    })
+  } catch (error) {
+    console.error("Change password form error:", error)
+    res.status(500).render("error", {
+      message: "Error loading change password form",
+      user: req.session.user || null,
+    })
+  }
+})
+
+router.post(
+  "/change-password",
+  [
+    body("currentPassword").notEmpty().withMessage("Current password is required"),
+    body("newPassword").isLength({ min: 6 }).withMessage("New password must be at least 6 characters"),
+    body("confirmPassword").custom((value, { req }) => {
+      if (value !== req.body.newPassword) {
+        throw new Error("Passwords do not match")
+      }
+      return true
+    }),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.render("hod/change-password", {
+          error: errors.array()[0].msg,
+          success: null,
+        })
+      }
+
+      const { currentPassword, newPassword } = req.body
+      const userId = req.session.user._id
+
+      // Get user from database
+      const user = await User.findById(userId)
+      if (!user) {
+        return res.render("hod/change-password", {
+          error: "User not found",
+          success: null,
+        })
+      }
+
+      // Verify current password
+      const isMatch = await bcrypt.compare(currentPassword, user.password)
+      if (!isMatch) {
+        return res.render("hod/change-password", {
+          error: "Current password is incorrect",
+          success: null,
+        })
+      }
+
+      // Hash new password
+      const hashedPassword = await bcrypt.hash(newPassword, 12)
+
+      // Update password in database
+      await User.findByIdAndUpdate(userId, { password: hashedPassword })
+
+      console.log("Password changed successfully for HOD:", user.name)
+
+      res.render("hod/change-password", {
+        error: null,
+        success: "Password changed successfully!",
+      })
+    } catch (error) {
+      console.error("Change password error:", error)
+      res.render("hod/change-password", {
+        error: "Error changing password: " + error.message,
+        success: null,
+      })
+    }
+  },
+)
+
+// HOD Self-Assessment Form
+router.get("/self-assessment", async (req, res) => {
+  try {
+    const hodId = req.session.user._id
+    const selectedMonth = req.query.month || getCurrentMonth()
+
+    // Get HOD's department
+    const hod = await User.findById(hodId).populate("department")
+
+    if (!hod || !hod.department) {
+      return res.render("hod/self-assessment", {
+        hod: req.session.user,
+        questions: [],
+        selectedMonth,
+        availableMonths: [],
+        error: "You are not assigned to any department",
+      })
+    }
+
+    const availableMonths = []
+    const today = new Date()
+    for (let i = 0; i < 12; i++) {
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1)
+      const month = date.getMonth() + 1
+      const year = date.getFullYear()
+      availableMonths.push(`M${month} ${year}`)
+    }
+
+    // Get self-assessment questions for HOD's department
+    const questions = await Question.find({
+      questionType: "self-assessment",
+      isActive: true,
+      $or: [
+        { department: null }, // Global questions
+        { department: hod.department._id }, // Questions for HOD's department
+      ],
+    })
+      .populate("department", "name")
+      .sort({ category: 1, createdAt: 1 })
+
+    // Check if already submitted for selected month
+    const existingAssessment = await SelfAssessment.findOne({
+      employee: hodId,
+      month: selectedMonth,
+    })
+
+    res.render("hod/self-assessment", {
+      hod: req.session.user,
+      questions,
+      selectedMonth,
+      availableMonths,
+      existingAssessment: existingAssessment ? existingAssessment : null,
+      success: null,
+      error: null,
+    })
+  } catch (error) {
+    console.error("Self-assessment form error:", error)
+    res.status(500).render("error", {
+      message: "Error loading self-assessment form",
+      user: req.session.user || null,
+    })
+  }
+})
+
+// Submit HOD Self-Assessment
+router.post("/self-assessment", async (req, res) => {
+  try {
+    const hodId = req.session.user._id
+    const { month, answers } = req.body
+
+    // Get HOD's department
+    const hod = await User.findById(hodId).populate("department")
+
+    if (!hod || !hod.department) {
+      return res.status(400).json({ success: false, message: "HOD department not found" })
+    }
+
+    const existingAssessment = await SelfAssessment.findOne({
+      employee: hodId,
+      month: month,
+    })
+
+    // If assessment exists, check if all questions are editable
+    if (existingAssessment) {
+      // Get all questions and check if any are non-editable
+      const questionsInAssessment = existingAssessment.answers.map((a) => a.question)
+      const nonEditableQuestions = await Question.find({
+        _id: { $in: questionsInAssessment },
+        editableResponse: false,
+      })
+
+      if (nonEditableQuestions.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message: "You have already submitted your self-assessment for this month. Some responses cannot be edited.",
+        })
+      }
+
+      // Update existing assessment with new answers
+      existingAssessment.answers = []
+      Object.keys(answers).forEach((questionId) => {
+        const answer = answers[questionId]
+        if (answer) {
+          const processedAnswer = Array.isArray(answer) ? answer.join(", ") : answer
+          existingAssessment.answers.push({
+            question: questionId,
+            answer: processedAnswer,
+          })
+        }
+      })
+      existingAssessment.submittedDate = new Date()
+
+      await existingAssessment.save()
+      console.log("Self-assessment updated for HOD:", hod.name, "Month:", month)
+      return res.json({ success: true, message: "Self-assessment updated successfully!" })
+    }
+
+    // Process answers - handle both single values and arrays (for checkboxes)
+    const processedAnswers = []
+
+    Object.keys(answers).forEach((questionId) => {
+      const answer = answers[questionId]
+      if (answer) {
+        // For checkbox answers that are arrays, join them; for others keep as is
+        const processedAnswer = Array.isArray(answer) ? answer.join(", ") : answer
+        processedAnswers.push({
+          question: questionId,
+          answer: processedAnswer,
+        })
+      }
+    })
+
+    const selfAssessment = new SelfAssessment({
+      employee: hodId,
+      department: hod.department._id,
+      month: month,
+      answers: processedAnswers,
+    })
+
+    await selfAssessment.save()
+    console.log("Self-assessment submitted for HOD:", hod.name, "Month:", month)
+
+    res.json({ success: true, message: "Self-assessment submitted successfully!" })
+  } catch (error) {
+    console.error("Self-assessment submission error:", error)
+    res.status(500).json({ success: false, message: "Error submitting self-assessment: " + error.message })
   }
 })
 
@@ -325,6 +556,7 @@ router.get("/reviews", async (req, res) => {
       department: req.userDepartment,
       previousReviewsMap, // Pass the map of previous reviews from PREVIOUS month
       selfAssessmentsMap: JSON.stringify(selfAssessmentsMap),
+      currentHODLevel: req.session.user.hodLevel, // Pass HOD level to template
     })
   } catch (error) {
     console.error("Error in /reviews GET:", error)
@@ -551,7 +783,7 @@ router.get("/export/reviews", async (req, res) => {
       .sort({ createdAt: -1 })
 
     let csvContent =
-      "Employee Name,Employee ID,Email,Role,Department,Month,Overall Score,Reviewer,Review Date,Comments\n"
+      "Employee Name,Employee ID,Email,Role,Department,Month,Overall Score,Reviewer Name,Reviewer ID,Review Date,Comments\n"
 
     reviews.forEach((review) => {
       const employeeName = review.employee ? review.employee.name : "Unknown"
@@ -562,10 +794,11 @@ router.get("/export/reviews", async (req, res) => {
       const month = review.month || "N/A"
       const score = review.overallScore || review.score || "N/A"
       const reviewer = review.reviewer ? review.reviewer.name : "Unknown"
+      const reviewerId = review.reviewer ? review.reviewer.employeeId : "Unknown"
       const reviewDate = new Date(review.reviewDate).toLocaleDateString()
       const comments = review.comments ? review.comments.replace(/"/g, '""').replace(/\n/g, " ") : ""
 
-      csvContent += `"${employeeName}","${employeeId}","${email}","${role}","${department}","${month}","${score}","${reviewer}","${reviewDate}","${comments}"\n`
+      csvContent += `"${employeeName}","${employeeId}","${email}","${role}","${department}","${month}","${score}","${reviewer}","${reviewerId}","${reviewDate}","${comments}"\n`
     })
 
     res.setHeader("Content-Type", "text/csv")
@@ -621,8 +854,13 @@ router.get("/export/performance", async (req, res) => {
     // Get reviews for the selected month
     const reviews = await Review.find({
       month: currentMonth,
-      department: { $in: allAssignedDepartmentIds },
-    }).populate("employee", "name employeeId email")
+      $or: [
+        { department: { $in: allAssignedDepartmentIds } },
+        { reviewer: currentHODId },
+      ],
+    })
+      .populate("employee", "name employeeId email")
+      .populate("reviewer", "name employeeId")
 
     // Create performance summary
     const performanceData = []
@@ -632,12 +870,24 @@ router.get("/export/performance", async (req, res) => {
 
       let avgScore = 0
       const reviewCount = employeeReviews.length
+      const reviewers = []
 
       if (reviewCount > 0) {
         const totalScore = employeeReviews.reduce((sum, review) => {
           return sum + (review.overallScore || review.score || 0)
         }, 0)
         avgScore = (totalScore / reviewCount).toFixed(2)
+
+        // Collect reviewer information
+        employeeReviews.forEach((review) => {
+          if (review.reviewer && !reviewers.some((r) => r._id === review.reviewer._id.toString())) {
+            reviewers.push({
+              _id: review.reviewer._id.toString(),
+              name: review.reviewer.name,
+              employeeId: review.reviewer.employeeId,
+            })
+          }
+        })
       }
 
       const performanceLevel = getPerformanceLevel(Number.parseFloat(avgScore))
@@ -651,16 +901,17 @@ router.get("/export/performance", async (req, res) => {
         avgScore: avgScore || "N/A",
         reviewCount,
         performanceLevel,
+        reviewers: reviewers.map((r) => `${r.name} (${r.employeeId})`).join("; "),
         month: currentMonth,
       })
     }
 
-    // Generate CSV content with selected month
+    // Generate CSV content with selected month and reviewer info
     let csvContent =
-      "Employee Name,Employee ID,Email,Department,Role,Average Score,Review Count,Performance Level,Month\n"
+      "Employee Name,Employee ID,Email,Department,Role,Average Score,Review Count,Performance Level,Reviewers,Month\n"
 
     performanceData.forEach((emp) => {
-      csvContent += `"${emp.name}","${emp.employeeId}","${emp.email}","${emp.department}","${emp.role}","${emp.avgScore}","${emp.reviewCount}","${emp.performanceLevel}","${emp.month}"\n`
+      csvContent += `"${emp.name}","${emp.employeeId}","${emp.email}","${emp.department}","${emp.role}","${emp.avgScore}","${emp.reviewCount}","${emp.performanceLevel}","${emp.reviewers}","${emp.month}"\n`
     })
 
     res.setHeader("Content-Type", "text/csv")

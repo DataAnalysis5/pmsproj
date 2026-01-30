@@ -1,12 +1,82 @@
 const express = require("express")
-const { requireAuth } = require("../middleware/auth")
+const { body, validationResult } = require("express-validator")
+const { requireAuth, requireRole } = require("../middleware/auth")
 const Review = require("../models/Review")
 const User = require("../models/User")
+const Department = require("../models/Department")
+const Question = require("../models/Question")
 
 const router = express.Router()
 
 // Apply authentication to all API routes
 router.use(requireAuth)
+
+// HOD: Create questions for HOD reviews (Higher HOD only)
+router.post(
+  "/hod/questions",
+  [
+    body("text").trim().notEmpty().withMessage("Question text is required"),
+    body("category")
+      .isIn(["performance", "quiz", "attendance", "late_remark", "behaviour", "extra"])
+      .withMessage("Valid category is required"),
+  ],
+  async (req, res) => {
+    try {
+      // Check if user is HOD with higher level
+      const user = await User.findById(req.session.user._id)
+      if (!user || user.role !== "hod" || user.hodLevel !== "higher") {
+        return res.status(403).json({
+          success: false,
+          message: "Only Higher Level HODs can create questions",
+        })
+      }
+
+      const errors = validationResult(req)
+      if (!errors.isEmpty()) {
+        return res.status(400).json({
+          success: false,
+          message: errors.array()[0].msg,
+        })
+      }
+
+      const { text, category, department, month } = req.body
+
+      const questionData = {
+        text,
+        category,
+        questionType: "review",
+        createdBy: req.session.user._id,
+        isActive: true,
+      }
+
+      if (month && month.trim() !== "") {
+        questionData.month = month
+      }
+
+      if (department && department.trim() !== "") {
+        questionData.department = department
+      }
+
+      const newQuestion = await Question.create(questionData)
+      console.log(
+        "HOD Question created:",
+        newQuestion.text,
+        "for department:",
+        newQuestion.department || "Global",
+        "by HOD:",
+        user.name,
+      )
+
+      res.json({ success: true, message: "Question created successfully", question: newQuestion })
+    } catch (error) {
+      console.error("HOD question creation error:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error creating question: " + error.message,
+      })
+    }
+  },
+)
 
 // Get performance data for charts
 router.get("/performance-data", async (req, res) => {
