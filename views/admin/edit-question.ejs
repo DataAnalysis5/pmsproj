@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Question - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="admin-page">
+            <div class="page-header">
+                <h1>Edit Question</h1>
+                <a href="/admin/questions" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Questions
+                </a>
+            </div>
+            
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <div class="admin-card" style="max-width: 800px; margin: 0 auto;">
+                <h3>Edit Question Details</h3>
+                <form action="/admin/questions/<%= question._id %>/edit" method="POST" class="admin-form">
+                    <div class="form-group">
+                        <label for="text">Question Text</label>
+                        <textarea id="text" name="text" rows="3" required 
+                            placeholder="Enter the question..."><%= question.text %></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="questionFor">Question For</label>
+                            <select id="questionFor" name="questionFor" required onchange="toggleDepartmentField()">
+                                <option value="">Select Target User</option>
+                                <option value="employee" <%= question.questionFor === 'employee' || !question.questionFor ? 'selected' : '' %>>Employee</option>
+                                <option value="hod" <%= question.questionFor === 'hod' ? 'selected' : '' %>>HOD (Low Level)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="questionType">Question Type</label>
+                            <select id="questionType" name="questionType" required onchange="toggleInputTypeField()">
+                                <option value="">Select Question Type</option>
+                                <option value="review" <%= question.questionType === 'review' ? 'selected' : '' %>>Review Question</option>
+                                <option value="self-assessment" <%= question.questionType === 'self-assessment' ? 'selected' : '' %>>Self-Assessment Question</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="performance" <%= question.category === 'performance' ? 'selected' : '' %>>Performance</option>
+                                <option value="quiz" <%= question.category === 'quiz' ? 'selected' : '' %>>Quiz</option>
+                                <option value="attendance" <%= question.category === 'attendance' ? 'selected' : '' %>>Attendance</option>
+                                <option value="late_remark" <%= question.category === 'late_remark' ? 'selected' : '' %>>Late Remark</option>
+                                <option value="behaviour" <%= question.category === 'behaviour' ? 'selected' : '' %>>Behaviour</option>
+                                <option value="extra" <%= question.category === 'extra' ? 'selected' : '' %>>Extra</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group" id="departmentGroup">
+                            <label for="department" id="departmentLabel">Department (Optional - for Employees)</label>
+                            <select id="department" name="department">
+                                <option value="">Global (All Departments)</option>
+                                <% departments.forEach(dept => { %>
+                                    <option value="<%= dept._id %>" <%= question.department && question.department._id.toString() === dept._id.toString() ? 'selected' : '' %>>
+                                        <% if (dept.parentDepartment) { %><%= dept.parentDepartment.name %> - <% } %><%= dept.name %>
+                                    </option>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="month">Month (Optional - leave blank for all months)</label>
+                            <select id="month" name="month">
+                                <option value="">All Months</option>
+                                <% for (let m = 1; m <= 12; m++) { %>
+                                    <option value="M<%= m %>" <%= question.month === `M${m}` ? 'selected' : '' %>>Month <%= m %> (M<%= m %>)</option>
+                                <% } %>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="inputTypeGroup" style="display: <%= question.questionType === 'self-assessment' ? 'block' : 'none' %>;">
+                            <label for="inputType">Input Type (for Self-Assessment)</label>
+                            <select id="inputType" name="inputType" onchange="toggleOptionsField()">
+                                <option value="text" <%= question.inputType === 'text' ? 'selected' : '' %>>Short Text</option>
+                                <option value="numeric" <%= question.inputType === 'numeric' ? 'selected' : '' %>>Numeric (Numbers Only)</option>
+                                <option value="textarea" <%= question.inputType === 'textarea' ? 'selected' : '' %>>Long Text</option>
+                                <option value="radio" <%= question.inputType === 'radio' ? 'selected' : '' %>>Radio Buttons</option>
+                                <option value="checkbox" <%= question.inputType === 'checkbox' ? 'selected' : '' %>>Checkboxes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="optionsGroup" style="display: <%= question.inputType === 'radio' || question.inputType === 'checkbox' ? 'block' : 'none' %>;">
+                        <label for="options">Options (one per line, for Radio/Checkbox only)</label>
+                        <textarea id="options" name="options" rows="4" 
+                            placeholder="Option 1&#10;Option 2&#10;Option 3"><% if (question.options && question.options.length > 0) { %><%= question.options.join('\n') %><% } %></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="editableResponse" name="editableResponse" <%= question.editableResponse ? 'checked' : '' %>>
+                            <span>Editable Response (Allow response changes after submission)</span>
+                        </label>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                        <a href="/admin/questions" class="btn btn-outline">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function toggleDepartmentField() {
+        const questionFor = document.getElementById('questionFor').value;
+        const departmentGroup = document.getElementById('departmentGroup');
+        const departmentLabel = document.getElementById('departmentLabel');
+        const departmentSelect = document.getElementById('department');
+        
+        if (questionFor === 'hod') {
+            departmentGroup.style.display = 'block';
+            departmentLabel.textContent = 'Department - Select department HODs (Low Level) to create questions for';
+            departmentSelect.required = true;
+        } else if (questionFor === 'employee') {
+            departmentGroup.style.display = 'block';
+            departmentLabel.textContent = 'Department (Optional - for Employees)';
+            departmentSelect.required = false;
+        } else {
+            departmentGroup.style.display = 'none';
+            departmentSelect.required = false;
+        }
+    }
+
+    function toggleInputTypeField() {
+        const questionType = document.getElementById('questionType').value;
+        const inputTypeGroup = document.getElementById('inputTypeGroup');
+        
+        if (questionType === 'self-assessment') {
+            inputTypeGroup.style.display = 'block';
+            toggleOptionsField();
+        } else {
+            inputTypeGroup.style.display = 'none';
+            document.getElementById('optionsGroup').style.display = 'none';
+        }
+    }
+
+    function toggleOptionsField() {
+        const inputType = document.getElementById('inputType').value;
+        const optionsGroup = document.getElementById('optionsGroup');
+        
+        if (inputType === 'radio' || inputType === 'checkbox') {
+            optionsGroup.style.display = 'block';
+        } else {
+            optionsGroup.style.display = 'none';
+        }
+    }
+
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        return true;
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleDepartmentField();
+    });
+    </script>
+</body>
+</html>
