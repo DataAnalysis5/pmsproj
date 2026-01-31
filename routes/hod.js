@@ -128,11 +128,19 @@ router.get("/dashboard", async (req, res) => {
       (hod) => !reviewedEmployeeIds.some((id) => id.toString() === hod._id.toString()),
     )
 
-    // Recent reviews
+    // Recent reviews given by this HOD
     const recentReviews = await Review.find({
       reviewer: req.session.user._id,
     })
       .populate("employee", "name employeeId")
+      .sort({ createdAt: -1 })
+      .limit(5)
+
+    // Recent reviews received by this HOD
+    const recentReviewsReceived = await Review.find({
+      employee: req.session.user._id,
+    })
+      .populate("reviewer", "name employeeId")
       .sort({ createdAt: -1 })
       .limit(5)
 
@@ -147,6 +155,7 @@ router.get("/dashboard", async (req, res) => {
       pendingEmployeeReviews: pendingEmployeeReviews.length,
       pendingHODReviews: pendingHODReviews.length,
       recentReviews,
+      recentReviewsReceived,
       currentMonth,
     })
   } catch (error) {

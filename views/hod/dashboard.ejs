@@ -90,7 +90,7 @@
             
             <div class="dashboard-grid">
                 <div class="dashboard-card">
-                    <h3>Recent Reviews</h3>
+                    <h3>Recent Reviews Given</h3>
                     <div class="recent-reviews">
                         <% recentReviews.forEach(review => { %>
                             <div class="review-item">
@@ -108,7 +108,31 @@
                             </div>
                         <% }) %>
                         <% if (recentReviews.length === 0) { %>
-                            <p>No reviews yet</p>
+                            <p>No reviews given yet</p>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Recent Reviews Received</h3>
+                    <div class="recent-reviews">
+                        <% recentReviewsReceived.forEach(review => { %>
+                            <div class="review-item">
+                                <div class="review-employee">
+                                    <strong><%= review.reviewer.name %></strong>
+                                    <span class="employee-id">(<%= review.reviewer.employeeId %>)</span>
+                                </div>
+                                <div class="review-details">
+                                    <span class="review-score"><%= review.overallScore || review.score || 'N/A' %>/6 ⭐</span>
+                                    <span class="review-quarter"><%= review.quarter %></span>
+                                </div>
+                                <div class="review-date">
+                                    <%= new Date(review.reviewDate).toLocaleDateString() %>
+                                </div>
+                            </div>
+                        <% }) %>
+                        <% if (recentReviewsReceived.length === 0) { %>
+                            <p>No reviews received yet</p>
                         <% } %>
                     </div>
                 </div>
@@ -137,17 +161,6 @@
                                 <span>Change Password</span>
                             </div>
                         </a>
-                        <div class="export-actions" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
-                            <h4 style="margin-bottom: 0.5rem; color: #2c3e50; font-size: 0.9rem;">Export Data</h4>
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <a href="/hod/export/reviews" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
-                                    <i class="fas fa-download"></i> Export Reviews
-                                </a>
-                                <a href="/hod/export/performance" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
-                                    <i class="fas fa-chart-bar"></i> Export Performance
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
