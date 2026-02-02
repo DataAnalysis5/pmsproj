@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Assessment - Performance Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <% if (user) { %>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>PMS - <%= user.role.toUpperCase() %></h2>
+            </div>
+            <div class="nav-menu">
+                <span class="nav-user">
+                    <i class="fas fa-user"></i>
+                    <%= user.name %> (<%= user.employeeId %>)
+                </span>
+                <a href="/hod/dashboard" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </a>
+                <form action="/auth/logout" method="POST" style="display: inline;" onsubmit="return handleLogout(this)">
+                    <button type="submit" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% } %>
+
+    <main class="main-content">
+        <div class="admin-page">
+            <div class="page-header">
+                <!-- Added month selector for HODs to choose which month to fill -->
+                <h1>Self Assessment - <%= selectedMonth %></h1>
+                
+                <!-- Month selector -->
+                <div style="margin-top: 1.5rem; margin-bottom: 1rem; padding: 1rem; background-color: #f5f5f5; border-radius: 8px;">
+                    <label for="monthSelector" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Select Month to Fill Self-Assessment:</label>
+                    <select id="monthSelector" onchange="handleMonthChange()" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                        <option value="">-- Choose a Month --</option>
+                        <% availableMonths.forEach(month => { %>
+                            <option value="<%= month %>" <%= month === selectedMonth ? 'selected' : '' %>>
+                                <%= month %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="alert alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <% if (typeof success !== 'undefined' && success) { %>
+                <div class="alert alert-success">
+                    <%= success %>
+                </div>
+            <% } %>
+            
+            <div class="admin-card" style="max-width: 900px; margin: 0 auto;">
+                <% if (selectedMonth && selectedMonth !== '') { %>
+                    <!-- Added check for existing assessment and show editing mode if present -->
+                    <% if (existingAssessment) { %>
+                        <div class="alert alert-info" style="margin-bottom: 1.5rem;">
+                            <i class="fas fa-pencil-alt"></i> <strong>Edit Mode:</strong> You have already submitted your self-assessment for <%= selectedMonth %>. You can edit responses for questions marked as "Editable Response".
+                        </div>
+                    <% } %>
+                    
+                    <form action="/hod/self-assessment" method="POST" class="admin-form" onsubmit="handleSubmit(event)">
+                        <input type="hidden" name="month" value="<%= selectedMonth %>">
+                        
+                        <% questions.forEach((question, index) => { %>
+                            <!-- Get existing answer for this question if assessment exists -->
+                            <% 
+                                let existingAnswer = '';
+                                let isEditable = question.editableResponse;
+                                if (existingAssessment && existingAssessment.answers) {
+                                    const answerObj = existingAssessment.answers.find(a => a.question && a.question.toString() === question._id.toString());
+                                    if (answerObj) {
+                                        existingAnswer = answerObj.answer || '';
+                                    }
+                                }
+                            %>
+                            
+                            <div class="form-group" style="margin-bottom: 30px; padding: 20px; background-color: <% if (existingAssessment && !isEditable) { %>#fff3cd<% } else { %>#f9f9f9<% } %>; border-radius: 8px; border-left: 4px solid <% if (isEditable) { %>#28a745<% } else if (existingAssessment) { %>#ffc107<% } else { %>#007bff<% } %>;">
+                                <!-- Modified layout for numeric questions to display input beside question -->
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px; <% if (question.inputType !== 'numeric') { %>flex-direction: column; align-items: flex-start;<% } %>">
+                                    <div style="flex: 1;">
+                                        <label style="display: block; font-weight: 600; font-size: 16px;">
+                                            <%= (index + 1) %>. <%= question.text %>
+                                        </label>
+                                        <!-- Show editable response indicator -->
+                                        <div style="margin-top: 8px;">
+                                            <% if (isEditable) { %>
+                                                <span style="background-color: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; white-space: nowrap;">
+                                                    <i class="fas fa-edit"></i> Editable
+                                                </span>
+                                            <% } else if (existingAssessment) { %>
+                                                <span style="background-color: #ffc107; color: #333; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; white-space: nowrap;">
+                                                    <i class="fas fa-lock"></i> Locked
+                                                </span>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Numeric input positioned beside question -->
+                                    <% if (question.inputType === 'numeric') { %>
+                                        <input type="number" 
+                                               name="answers[<%= question._id %>]" 
+                                               required 
+                                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 150px; min-width: 150px;"
+                                               placeholder="Enter number..."
+                                               value="<%= existingAnswer %>"
+                                               <% if (existingAssessment && !isEditable) { %>disabled<% } %>>
+                                    <% } %>
+                                </div>
+                                
+                                <% if (question.inputType === 'radio') { %>
+                                    <div style="margin-top: 15px;">
+                                        <% question.options.forEach(option => { %>
+                                            <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                                                <input type="radio" id="q<%= question._id %>_<%= option %>" 
+                                                       name="answers[<%= question._id %>]" 
+                                                       value="<%= option %>"
+                                                       <% if (existingAnswer === option) { %>checked<% } %>
+                                                       <% if (existingAssessment && !isEditable) { %>disabled<% } %>
+                                                       required
+                                                       style="margin-right: 8px; width: auto; cursor: pointer;">
+                                                <label for="q<%= question._id %>_<%= option %>" style="margin-left: 0; font-weight: normal; cursor: pointer;">
+                                                    <%= option %>
+                                                </label>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                
+                                <% } else if (question.inputType === 'checkbox') { %>
+                                    <div style="margin-top: 15px;">
+                                        <% 
+                                            const existingAnswerArray = existingAnswer ? existingAnswer.split(', ') : [];
+                                        %>
+                                        <% question.options.forEach(option => { %>
+                                            <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                                                <input type="checkbox" id="q<%= question._id %>_<%= option %>" 
+                                                       name="answers[<%= question._id %>]" 
+                                                       value="<%= option %>"
+                                                       <% if (existingAnswerArray.includes(option)) { %>checked<% } %>
+                                                       <% if (existingAssessment && !isEditable) { %>disabled<% } %>
+                                                       style="margin-right: 8px; width: auto; cursor: pointer;">
+                                                <label for="q<%= question._id %>_<%= option %>" style="margin-left: 0; font-weight: normal; cursor: pointer;">
+                                                    <%= option %>
+                                                </label>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                
+                                <% } else if (question.inputType === 'textarea') { %>
+                                    <div style="margin-top: 15px;">
+                                        <textarea name="answers[<%= question._id %>]" 
+                                                  rows="5" 
+                                                  required 
+                                                  style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: Arial, sans-serif;"
+                                                  placeholder="Enter your response..."
+                                                  <% if (existingAssessment && !isEditable) { %>disabled<% } %>><%= existingAnswer %></textarea>
+                                    </div>
+                                
+                                <% } else if (question.inputType !== 'numeric') { %>
+                                    <div style="margin-top: 15px;">
+                                        <input type="text" name="answers[<%= question._id %>]" 
+                                               required 
+                                               style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"
+                                               placeholder="Enter your response..."
+                                               value="<%= existingAnswer %>"
+                                               <% if (existingAssessment && !isEditable) { %>disabled<% } %>>
+                                    </div>
+                                <% } %>
+                                
+                                <!-- Show locked message for non-editable responses -->
+                                <% if (existingAssessment && !isEditable) { %>
+                                    <div style="margin-top: 15px; padding: 10px; background-color: #ffe8e8; border-radius: 4px; font-size: 0.9rem; color: #d9534f;">
+                                        <i class="fas fa-lock"></i> This response is locked and cannot be edited.
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% }) %>
+                        
+                        <% if (questions.length === 0) { %>
+                            <div class="alert alert-info">
+                                No self-assessment questions available for your department.
+                            </div>
+                        <% } %>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary" <% if (questions.length === 0) { %>disabled<% } %>>
+                                <i class="fas fa-<% if (existingAssessment) { %>save<% } else { %>check<% } %>"></i> <% if (existingAssessment) { %>Update<% } else { %>Submit<% } %> Self-Assessment
+                            </button>
+                            <a href="/hod/dashboard" class="btn btn-outline">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                <% } else { %>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-circle"></i> Please select a month above to begin your self-assessment.
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+    function handleLogout(form) {
+        const button = form.querySelector('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging out...';
+        button.disabled = true;
+        
+        return true;
+    }
+
+    function handleMonthChange() {
+        const selectedMonth = document.getElementById('monthSelector').value;
+        if (selectedMonth) {
+            window.location.href = `/hod/self-assessment?month=${encodeURIComponent(selectedMonth)}`;
+        }
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const formData = new FormData(form);
+        const month = formData.get('month');
+        const answers = {};
+        
+        // Collect all answers
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith('answers[')) {
+                const questionId = key.match(/answers\[(.*?)\]/)[1];
+                if (!answers[questionId]) {
+                    answers[questionId] = [];
+                }
+                answers[questionId].push(value);
+            }
+        }
+
+        // Convert single-value arrays to strings
+        Object.keys(answers).forEach(key => {
+            if (answers[key].length === 1) {
+                answers[key] = answers[key][0];
+            }
+        });
+        
+        fetch('/hod/self-assessment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                month: month,
+                answers: answers
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                window.location.href = '/hod/dashboard';
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error submitting self-assessment');
+        });
+    }
+    </script>
+</body>
+</html>
